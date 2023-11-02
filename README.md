@@ -34,7 +34,9 @@
   <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JsonWebToken" />
 </p>
 
+<br>
 
+<h2 align="center">Features</h2>
 
 <h4 align="center">Deployed On:</h4>
 
