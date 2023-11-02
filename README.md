@@ -40,6 +40,7 @@
 <p align="center">
   
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
+  <br>
 </p>
 <br>
-<h2 align="center">Features</h2>
+<h2>Features</h2>
