@@ -17,6 +17,11 @@
   <img src="https://img.shields.io/badge/CSS6-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css6" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html5" />
 </p>
+<p align="center">
+   <b>
+        <a href="https://axios-http.com"><img src="https://axios-http.com/assets/logo.svg" /></a><br>
+    </b>
+</p>
 
 
 <h4 align="center">Backend:</h4>
@@ -28,11 +33,13 @@
    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="postgresql" />
   <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JsonWebToken" />
 </p>
-
-
-
+<br />
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
+  
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
+  <br>
 </p>
+<br>
+<h2>Features</h2>
