@@ -30,9 +30,9 @@
 
 <h4 align="center">Payment Gateway:</h4>
 
-<p align="center">
+
 <h1>Stripe</h1>
-</p>
+
 
 
 <h4 align="center">Deployed On:</h4>
