@@ -28,12 +28,6 @@
 </p>
 
 
-<h4 align="center">Payment Gateway:</h4>
-
-
-<h1>Stripe</h1>
-
-
 
 <h4 align="center">Deployed On:</h4>
 
