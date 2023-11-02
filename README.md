@@ -1,9 +1,7 @@
-# Created by Lorenzo Gardner, Shamorr Williams, Tyler Lincoln, Tom Cheon - CAPSTONE FSA PT 2023
-
-
 <h1 align="center">Nike Clone</h1>
 
-<h3 align="center">An E-commerce web application that includes all major functionalities</h3>
+<h3 align="center">Created by Lorenzo Gardner, Shamorr Williams, Tyler Lincoln, Tom Cheon - CAPSTONE FSA PT 2023
+</h3>
 
 <br />
 
