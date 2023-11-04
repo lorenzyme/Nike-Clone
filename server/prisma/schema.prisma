@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model accessories {
+  id       Int     @id @default(autoincrement())
+  itemname String  @db.VarChar(255)
+  color    String? @db.VarChar(255)
+  size     String? @db.VarChar(255)
+}
+
+model bottoms {
+  id       Int     @id @default(autoincrement())
+  itemname String  @db.VarChar(255)
+  color    String  @db.VarChar(255)
+  size     String  @db.VarChar(255)
+  gender   String  @db.VarChar(255)
+  forkids  Boolean
+}
+
+model shoes {
+  id       Int     @id @default(autoincrement())
+  itemname String  @db.VarChar(255)
+  color    String  @db.VarChar(255)
+  size     String  @db.VarChar(255)
+  gender   String  @db.VarChar(255)
+  forkids  Boolean
+}
+
+model tops {
+  id       Int     @id @default(autoincrement())
+  itemname String  @db.VarChar(255)
+  color    String  @db.VarChar(255)
+  size     String  @db.VarChar(255)
+  gender   String  @db.VarChar(255)
+  forkids  Boolean
+}
+
+model users {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(255)
+  email    String @db.VarChar(255)
+  password String @db.VarChar(255)
+}
