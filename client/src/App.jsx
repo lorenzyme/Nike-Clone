@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './index.css'
+import './Styles.css'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        Nike
+        <h2>Nike</h2>
         </div>
     </>
   )
