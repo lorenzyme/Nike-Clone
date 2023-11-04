@@ -1,6 +1,6 @@
 # SERVER TROUBLESHOOTING STEPS
 -------------------------------
-1. Make sure you cd into the "SERVER" folder --> then 'npm start'
+1. Make sure you cd into the "server" folder --> then 'npm start'
 
 
 # POSTMAN TROUBLESHOOTING STEPS
