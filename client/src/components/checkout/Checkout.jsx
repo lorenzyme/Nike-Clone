@@ -44,14 +44,14 @@ const Checkout = () => {
             id="input-field"
             type="text"
           />
-          Username
+          Address
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             id="input-field"
             type="text"
           />
-          Password
+          Phone Number
           <input
             type="text"
             value={phone}
