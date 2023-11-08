@@ -1,4 +1,5 @@
 import Carousel from "./Carousel";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -8,11 +9,14 @@ const Home = () => {
           <button>Men</button>
           <button>Women</button>
           <button>Kids</button>
-          {/* search bar goes here */}
-          {/* wishlist button goes here */}
-          {/* cart button goes here */}
         </div>
-
+        <div id="secondaryNav">
+        <Link to="/search" id="search-link">
+            Search
+          </Link>
+              {/* wishlist button goes here */}
+              {/* cart button goes here */}
+        </div>
         <div id="scroll-container">
           <h1 id="scrolling-text">JUST DO IT.</h1>
         </div>
