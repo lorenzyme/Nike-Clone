@@ -43,7 +43,7 @@ function App() {
             Checkout
           </Link>
           <Link to="/all" id="products-link">
-            
+            Hello world
           </Link>
         </div>
         <div id="main-section">

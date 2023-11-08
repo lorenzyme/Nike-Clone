@@ -27,10 +27,11 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { name, password, email } = req.body;
+        const { name, username, password, email } = req.body;
         const newUser = await prisma.users.create({
             data: {
                 name,
+                username,
                 password,
                 email
             }
@@ -58,12 +59,13 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const userId = parseInt(req.params.id);
-        const { name, password, email } = req.body;
+        const { name, username, password, email } = req.body;
 
         const updateUser = await prisma.users.update({
             where: {id: parseInt(userId)},
             data: {
                 name,
+                username,
                 password,
                 email
             }

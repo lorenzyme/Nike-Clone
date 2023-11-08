@@ -27,14 +27,16 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, gender, forkids } = req.body;
+        const { itemname, color, size, gender, forkids, details, cost } = req.body;
         const newBottoms = await prisma.bottoms.create({
             data: {
                 itemname,
                 color,
                 size,
                 gender,
-                forkids
+                forkids,
+                details,
+                cost
             }
         })
         res.json(newBottoms);
@@ -53,7 +55,9 @@ router.post('/new', async (req, res) => {
 //     "color": "black",
 //     "size": "34",
 //     "gender": "male",
-//     "forkids": "false"
+//     "forkids": false,
+//     "details": "some content",
+//     "cost": 5.70
 // }
 
 // ******************************************************************************************
@@ -62,7 +66,7 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const bottomsId = parseInt(req.params.id);
-        const { itemname, color, size, gender, forkids } = req.body;
+        const { itemname, color, size, gender, forkids, details, cost } = req.body;
 
         const updateBottoms = await prisma.bottoms.update({
             where: {id: parseInt(bottomsId)},
@@ -71,7 +75,9 @@ router.put('/:id', async (req, res) => {
                 color,
                 size,
                 gender,
-                forkids
+                forkids,
+                details,
+                cost
             }
         });
        return  res.json(updateBottoms);
@@ -90,7 +96,9 @@ router.put('/:id', async (req, res) => {
 //     "color": "black",
 //     "size": "34",
 //     "gender": "male",
-//     "forkids": "false"
+//     "forkids": false,
+//     "details": "some content",
+//     "cost": 5.70
 // }
 
 // ******************************************************************************************

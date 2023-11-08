@@ -8,42 +8,52 @@ datasource db {
 }
 
 model accessories {
-  id       Int     @id @default(autoincrement())
-  itemname String  @db.VarChar(255)
-  color    String? @db.VarChar(255)
-  size     String? @db.VarChar(255)
+  id       Int      @id @default(autoincrement())
+  itemname String?  @db.VarChar(255)
+  color    String?  @db.VarChar(255)
+  size     String?  @db.VarChar(255)
+  forkids  Boolean?
+  details  String?  @db.VarChar(1000)
+  cost     String?  @db.VarChar(50)     
 }
 
 model bottoms {
-  id       Int     @id @default(autoincrement())
-  itemname String  @db.VarChar(255)
-  color    String  @db.VarChar(255)
-  size     String  @db.VarChar(255)
-  gender   String  @db.VarChar(255)
-  forkids  Boolean
+  id       Int      @id @default(autoincrement())
+  itemname String?  @db.VarChar(255)
+  color    String?  @db.VarChar(255)
+  size     String?  @db.VarChar(255)
+  gender   String?  @db.VarChar(255)
+  forkids  Boolean?
+  details  String?  @db.VarChar(1000)
+  cost     String?  @db.VarChar(50)     
 }
 
 model shoes {
-  id       Int     @id @default(autoincrement())
-  itemname String  @db.VarChar(255)
-  color    String  @db.VarChar(255)
-  size     String  @db.VarChar(255)
-  gender   String  @db.VarChar(255)
-  forkids  Boolean
+  id       Int      @id @default(autoincrement())
+  itemname String?  @db.VarChar(255)
+  color    String?  @db.VarChar(255)
+  size     String?  @db.VarChar(255)
+  gender   String?  @db.VarChar(255)
+  forkids  Boolean?
+  details  String?  @db.VarChar(1000)
+  cost     String?  @db.VarChar(50)     
 }
 
 model tops {
-  id       Int     @id @default(autoincrement())
-  itemname String  @db.VarChar(255)
-  color    String  @db.VarChar(255)
-  size     String  @db.VarChar(255)
-  gender   String  @db.VarChar(255)
-  forkids  Boolean
+  id       Int      @id @default(autoincrement())
+  itemname String?  @db.VarChar(255)
+  color    String?  @db.VarChar(255)
+  size     String?  @db.VarChar(255)
+  gender   String?  @db.VarChar(255)
+  forkids  Boolean?
+  details  String?  @db.VarChar(1000)
+  cost     String?  @db.VarChar(50)
 }
 
 model users {
-  id       Int    @id @default(autoincrement())
-  name     String @db.VarChar(255)
-  email    String @db.VarChar(255)
-  password String @db.VarChar(255)
+  id       Int      @id @default(autoincrement())
+  name     String?  @db.VarChar(255)
+  email    String?  @db.VarChar(255)
+  username String?  @unique @db.VarChar(25)
+  password String?  @db.VarChar(50)
 }
