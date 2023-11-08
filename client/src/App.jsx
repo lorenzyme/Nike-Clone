@@ -22,6 +22,7 @@ function App() {
       const response = await fetch(`${DATABASE_URL}/products`);
       const data = await response.json();
       setProducts(data.data.products);
+      console.log(data.data.products);
     };
     GetProducts();
   }, [location.pathname]);
@@ -31,7 +32,7 @@ function App() {
       <div id="container">
         <div id="navbar">
           <Link to="/home" id="home-link">
-            Home
+            Home 
           </Link>
           <Link to="/login" id="login-link">
             Login

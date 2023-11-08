@@ -23,6 +23,9 @@ const Signup = () => {
           setName("");
           setUsername("");
           setPassword("");
+
+          // const newUser = () =>{post request}
+          // newUser();
         }}
         id="form"
       >
