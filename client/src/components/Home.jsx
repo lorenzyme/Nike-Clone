@@ -8,13 +8,13 @@ const Home = () => {
         <div id="catagories-bar">
           <button>Men</button>
           <button>Women</button>
-          <button>Kids</button>
+          <button>Kids</button>z
         </div>
         <div id="secondaryNav">
         <Link to="/search" id="search-link">
               🔍
           </Link>
-              {/* wishlist button goes here */}
+              <button>Wishlist</button>
               {/* cart button goes here */}
         </div>
         <div id="scroll-container">
