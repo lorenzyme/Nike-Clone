@@ -12,7 +12,7 @@ const Home = () => {
         </div>
         <div id="secondaryNav">
         <Link to="/search" id="search-link">
-            Search
+              🔍
           </Link>
               {/* wishlist button goes here */}
               {/* cart button goes here */}
@@ -22,8 +22,9 @@ const Home = () => {
         </div>
 
         <div id="space">
-          .<h3>⏰ Flash Sale | Extra 25% Off Select Styles</h3>
-          <p> Sign in and use code FLASH at checkout</p>
+          <h3 id="blank">.</h3><h3 className="coupon">⏰ Flash Sale | Extra 25% Off Select Styles</h3>
+          <p className="desc-text"> Sign in and use code <a id="coupon-code">FLASH</a> at checkout</p>
+          <br />
         </div>
 
         <img
@@ -32,7 +33,7 @@ const Home = () => {
           alt="product and models displayed with holiday backdrop"
         ></img>
 
-        <h1>JUST DO IT</h1>
+        <h1 id="JDI">JUST DO IT</h1>
         <br />
         <br />
         <br />

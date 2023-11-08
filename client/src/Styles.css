@@ -12,17 +12,22 @@ body {
 }
 
 * {
-  font-family: lato;
+  font-family: Futura;
   margin: 0;
 }
 
 @font-face {
-  font-family: lato;
-  src: url(/assets/Lato-Regular.ttf);
+  font-family: Futura;
+  src: url(./assets/FuturaBold.ttf);
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(./assets/Lato-Regular.ttf);
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -63,8 +68,8 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: x-large;
-  font-weight: 500;
+  font-size: medium;
+  font-weight: 550;
   font-family: inherit;
   background-color: #ffffff;
   cursor: pointer;
@@ -72,6 +77,7 @@ button {
 }
 button:hover {
   border-color: #646cff00;
+  color: #9c9c9c;
 }
 button:focus,
 button:focus-visible {
@@ -95,26 +101,34 @@ button:focus-visible {
 
 #join-link {
   position: relative;
-  top: 0px;
+  top: 1.5px;
   right: 100px;
+  font-size: small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #home-link {
   position: relative;
-  top: 0px;
+  top: 1.5px;
   right: 200px;
+  font-size: small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #login-link {
   position: relative;
-  top: 0px;
+  top: 1.5px;
   right: 150px;
+  font-size: small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #checkout-link {
   position: relative;
-  top: 0px;
+  top: 1.5px;
   right: 50px;
+  font-size: small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #navbar {
@@ -137,6 +151,7 @@ button:focus-visible {
   margin: 10px;
   display: flex;
   justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #catagories-window #scrolling-text-bg #scroll-container {
@@ -288,6 +303,7 @@ button:focus-visible {
   color: #000000;
   background-color: #dadada7a;
   margin-left: -32px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 input {
@@ -298,4 +314,29 @@ input {
 
 #chkout-button {
   border: solid rgb(197, 197, 197);
+}
+
+#blank {
+  color: #dadada7a;
+}
+
+#JDI{
+  font-size: 100px;
+}
+
+
+/* the thin text used in product descriptions and various other website elements */
+.desc-text{
+  font-weight: 300;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.coupon{
+  font-weight: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#coupon-code{
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
