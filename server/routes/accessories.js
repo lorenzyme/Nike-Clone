@@ -64,11 +64,12 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const accessoriesId = parseInt(req.params.id);
-        const { itemname, color, size, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, forkids, details, cost } = req.body;
 
         const updateItem = await prisma.accessories.update({
             where: {id: parseInt(accessoriesId)},
             data: {
+                id,
                 itemname,
                 color,
                 size,
