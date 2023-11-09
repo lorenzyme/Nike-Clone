@@ -1,35 +1,36 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
-const Products = ({products}) =>{
+const Products = () => {
 
-    return (
+    const [products, setProducts] = useState({});
 
-        <div className="all-products" key={products}>
+    const fetchProducts = async () => {
 
-            <div>
-        {
-            products?.map((product)=>{
-                return (
-                    <div className="product-info" key={product.id}>
-                        <img src={`${product.imageUrl}`} />
-                        <div>
-                        <h4 id="product-name">{product.name}</h4>
-                        <h4 id="cost">the {product.cost}</h4>
-                        <Link to={/single/`${product.id}`}>
-                        <button>
-                            Details
-                        </button>
-                        </Link>
-                        </div>
-                    </div>
+      //  DATABASE_URL goes here from env
 
-                )
-            })
-        }
+    try {
+
+       const response = await axios.get(`${DATABASE_URL}`);
+       const data = await response.json();
+        setProducts(data);
+        console.log(data);
+
+    } catch (e) {
+      console.log(e);
+    }
+    fetchProducts();
+  };
+  return (
+  <>
+    <div>
+        {/* {products.data.accessories.name} */}
     </div>
-        </div>
+  </>
+  )
 
-    )
-}
+};
+
 
 export default Products;
