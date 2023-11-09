@@ -8,8 +8,7 @@ const Products = () => {
 
     const fetchProducts = async () => {
 
-    let DATABASE_URL =
-      "postgresql://postgres:$hadow10510@localhost:8008/Nike?schema=public";
+      //  DATABASE_URL goes here from env
 
     try {
 
@@ -26,15 +25,12 @@ const Products = () => {
   return (
   <>
     <div>
-        {products.id}
+        {/* {products.data.accessories.name} */}
     </div>
   </>
   )
 
 };
 
-// in frontend fetch call to "nike"
-// backend with query everything and combine into array or obj and send back to frontend (gets all tables)
-// filter thru products using .filter for each type of product
 
 export default Products;
