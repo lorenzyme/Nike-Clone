@@ -11,22 +11,7 @@ import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 
 function App() {
-  const [products, setProducts] = useState({})
-
-  let DATABASE_URL="postgresql://postgres:$hadow10510@localhost:8008/Nike?schema=public"
   
-  const location = useLocation();
-
-  useEffect(() => {
-    const GetProducts = async () => {
-      const response = await fetch(`${DATABASE_URL}/products`);
-      const data = await response.json();
-      setProducts(data.data.products);
-      console.log(data.data.products);
-    };
-    GetProducts();
-  }, [location.pathname]);
-
   return (
     <>
       <div id="container">
@@ -55,8 +40,8 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/single:id" element={<SingleItem products={products} />} />
-            <Route path='/all' element={<Products products={products}/>} />
+            <Route path="/single:id" element={<SingleItem />} />
+            <Route path='/all' element={<Products />} />
           </Routes>
         </div>
       </div>

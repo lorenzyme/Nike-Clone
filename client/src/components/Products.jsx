@@ -1,35 +1,40 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
-const Products = ({products}) =>{
+const Products = () => {
 
-    return (
-        
-        <div className="all-products" key={products}>
+    const [products, setProducts] = useState({});
 
-            <div>
-        {
-            products?.map((product)=>{
-                return (
-                    <div className="product-info" key={product.id}>
-                        <img src={`${product.imageUrl}`} />
-                        <div>                        
-                        <h4 id="product-name">{product.name}</h4>
-                        <h4 id="cost">the {product.cost}</h4>
-                        <Link to={`/single/${product.id}`}>
-                        <button>
-                            Details
-                        </button>
-                        </Link>        
-                        </div>
-                    </div>
-                    
-                )
-            })
-        }
+    const fetchProducts = async () => {
+
+    let DATABASE_URL =
+      "postgresql://postgres:$hadow10510@localhost:8008/Nike?schema=public";
+
+    try {
+
+       const response = await axios.get(`${DATABASE_URL}`);
+       const data = await response.json();
+        setProducts(data);
+        console.log(data);
+
+    } catch (e) {
+      console.log(e);
+    }
+    fetchProducts();
+  };
+  return (
+  <>
+    <div>
+        {products.id}
     </div>
-        </div>
-        
-    )
-}
+  </>
+  )
+
+};
+
+// in frontend fetch call to "nike"
+// backend with query everything and combine into array or obj and send back to frontend (gets all tables)
+// filter thru products using .filter for each type of product
 
 export default Products;
