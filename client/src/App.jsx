@@ -12,6 +12,21 @@ import SingleItem from "./components/SingleItem";
 
 function App() {
 
+  const [products, setProducts] = useState({})
+
+  // let DATABASE_URL="postgresql://postgres:PASSWORD@localhost:8008/Nike?schema=public"
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const GetProducts = async () => {
+      const response = await fetch(`${DATABASE_URL}/products`);
+      const data = await response.json();
+      setProducts(data.data.products);
+    };
+    GetProducts();
+  }, [location.pathname]);
+
   return (
     <>
       <div id="container">

@@ -33,6 +33,13 @@
 2. npx prisma migrate dev --name replaceThisName
 3. Replace "replaceThisName" and name your migration
 
+# ERROR WITH .ENV AND MIGRATION
+- If you can't migrate the schema to your database because it says there's a port error...
+1. Delete the .env
+2. Make a new .env
+3. Input all the new information and try migration again
+4. If that fails, delete all files in the migration folder and repeat steps 1-3
+
 # Why is the "cost" column a string?
 - In the schema, or when you write a postman request you'll notice "cost" is a string type
 - I've tried to do an Int, but it never includes the decimals when you send a request (8.84 will just return 8)
