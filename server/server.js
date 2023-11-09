@@ -20,6 +20,7 @@ app.use('/nike/tops', require('./routes/tops'));
 app.use('/nike/bottoms', require('./routes/bottoms'));
 app.use('/nike/shoes', require('./routes/shoes'));
 app.use('/nike/users', require('./routes/users'));
+app.use('/nike/getAll', require('./routes/getAll'));
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
