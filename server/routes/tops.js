@@ -27,16 +27,18 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, gender, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, gender, forkids, details, cost, img } = req.body;
         const newTops = await prisma.tops.create({
             data: {
+                id,
                 itemname,
                 color,
                 size,
                 gender,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         })
         res.json(newTops);
@@ -58,6 +60,7 @@ router.post('/new', async (req, res) => {
 //     "forkids": false,
 //     "details": "some content",
 //     "cost": 5.70
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************
@@ -66,18 +69,20 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const topsId = parseInt(req.params.id);
-        const { itemname, color, size, gender, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, gender, forkids, details, cost, img } = req.body;
 
         const updateTops = await prisma.tops.update({
             where: {id: parseInt(topsId)},
             data: {
+                id,
                 itemname,
                 color,
                 size,
                 gender,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         });
        return  res.json(updateTops);
@@ -92,6 +97,7 @@ router.put('/:id', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
+//     "id": "1",
 //     "itemname": "tshirt",
 //     "color": "white",
 //     "size": "medium",
@@ -99,6 +105,7 @@ router.put('/:id', async (req, res) => {
 //     "forkids": false,
 //     "details": "some content",
 //     "cost": 5.70
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************

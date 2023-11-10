@@ -27,15 +27,17 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, forkids, details, cost, img } = req.body;
         const newAccessories = await prisma.accessories.create({
             data: {
+                id,
                 itemname,
                 color,
                 size,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         })
         res.json(newAccessories);
@@ -49,13 +51,14 @@ router.post('/new', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE A NEW ACCESSORY
 // {
-//     "id": "3",
+//     "id": 3,
 //     "itemname": "watch",
 //     "color": "gold",
 //     "size": "big"
 //     "forkids": false,
 //     "details": "some content",
-//     "cost": 5.70
+//     "cost": 5.70,
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************
@@ -64,7 +67,7 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const accessoriesId = parseInt(req.params.id);
-        const { id, itemname, color, size, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, forkids, details, cost, img } = req.body;
 
         const updateItem = await prisma.accessories.update({
             where: {id: parseInt(accessoriesId)},
@@ -75,7 +78,8 @@ router.put('/:id', async (req, res) => {
                 size,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         });
        return  res.json(updateItem);
@@ -90,12 +94,14 @@ router.put('/:id', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
+//     "id": 4
 //     "itemname": "necklace",
 //     "color": "silver",
 //     "size": "28 inch",
 //     "forkids": false,
 //     "details": "some content",
-//     "cost": 5.70
+//     "cost": 5.70,
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************
