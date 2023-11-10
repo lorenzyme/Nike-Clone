@@ -27,16 +27,18 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, gender, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, gender, forkids, details, cost, img } = req.body;
         const newBottoms = await prisma.bottoms.create({
             data: {
+                id,
                 itemname,
                 color,
                 size,
                 gender,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         })
         res.json(newBottoms);
@@ -58,6 +60,7 @@ router.post('/new', async (req, res) => {
 //     "forkids": false,
 //     "details": "some content",
 //     "cost": 5.70
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************
@@ -66,18 +69,20 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const bottomsId = parseInt(req.params.id);
-        const { itemname, color, size, gender, forkids, details, cost } = req.body;
+        const { id, itemname, color, size, gender, forkids, details, cost, img } = req.body;
 
         const updateBottoms = await prisma.bottoms.update({
             where: {id: parseInt(bottomsId)},
             data: {
+                id,
                 itemname,
                 color,
                 size,
                 gender,
                 forkids,
                 details,
-                cost
+                cost,
+                img
             }
         });
        return  res.json(updateBottoms);
@@ -92,6 +97,7 @@ router.put('/:id', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
+//     "id": "1",
 //     "itemname": "joggers",
 //     "color": "black",
 //     "size": "34",
@@ -99,6 +105,7 @@ router.put('/:id', async (req, res) => {
 //     "forkids": false,
 //     "details": "some content",
 //     "cost": 5.70
+//     "img": "put url here"
 // }
 
 // ******************************************************************************************

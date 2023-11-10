@@ -47,8 +47,8 @@ router.post('/new', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
-//     "id": "1",
 //     "name": "Tyler",
+//     "username": "Tyler15"
 //     "password": "tyler123",
 //     "email": "tyler@gmail.com"
 // }
@@ -83,6 +83,7 @@ router.put('/:id', async (req, res) => {
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
 //     "name": "Tyler",
+//     "username": "Tyler15"
 //     "password": "tyler123",
 //     "email": "tyler@gmail.com"
 // }
