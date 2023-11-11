@@ -17,10 +17,25 @@ export const allProducts = (payload) => {
 };
 
 
+// export const products = (state = initialState(), action = {}) => {
+//     if(action.type === getAllProducts){
+//         return {...state, ...action.payload}
+//     }else{
+//         return state
+//     }
+// };
+
+// define the handler for this specific action
+// takes a state and an action and returns the same way
+export const handleAllProducts = (state, action) => {
+    return {...state, ...action.payload}
+};
+// this is less an O(N) it's actually an O(1) operation
 export const products = (state = initialState(), action = {}) => {
-    if(action.type === getAllProducts){
-        return {...state, ...action.payload}
-    }else{
-        return state
-    }
+    // this object has a key of action type and the value is the action handler
+    const actionHandlers = {
+        [getAllProducts] : handleAllProducts
+    };
+    const reducer = actionHandlers[action.type];
+    return reducer ? reducer(state,action) : state
 };
