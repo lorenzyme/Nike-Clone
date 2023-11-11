@@ -1,36 +1,36 @@
-// import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-const Products = () => {
+import { allProducts } from "../app/products/products";
 
-    const [products, setProducts] = useState({});
 
-    const fetchProducts = async () => {
+const Products = () =>{
 
-      //  DATABASE_URL goes here from env
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.products );
 
-    try {
+    useEffect(()=>{
+        const getAllProducts = async () => {
+            const response = await fetch("http://localhost:3000/nike/getAll")
+            const data = await response.json();
+            dispatch(allProducts(data));
+        };
+        getAllProducts();
+  
+    },[location.pathname])
+    console.log(products); 
 
-       const response = await axios.get(`${DATABASE_URL}`);
-       const data = await response.json();
-        setProducts(data);
-        console.log(data);
-
-    } catch (e) {
-      console.log(e);
-    }
-    fetchProducts();
-  };
-  return (
-  <>
-    <div>
-        {/* {products.data.accessories.name} */}
-    </div>
-  </>
-  )
-
-};
+    return (
+        <>
+        <div>
+          Hello
+        </div>
+        </>
+        
+    )
+}
 
 
 export default Products;

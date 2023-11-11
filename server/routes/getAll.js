@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         const accessories = await prisma.accessories.findMany()
 
         const products = {bottoms, tops, shoes, accessories};
-
+        console.log(products)
         res.json(products);
 
     } catch (error) {
