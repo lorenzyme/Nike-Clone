@@ -1,6 +1,10 @@
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch, } from "react-redux";
+import { storeUser } from "./app/users/users";
+import axios from 'axios'
 import "./Styles.css";
+
 
 import Home from "./components/Home";
 import Signup from "./components/auth/Signup";
@@ -13,7 +17,33 @@ import SingleItem from "./components/SingleItem";
 
 function App() {
 
-  const [user, setUser] = useState(null);
+const user = useSelector((state) => state.users);
+const dispatch = useDispatch()
+const navigate = useNavigate()
+
+useEffect(() => {
+
+  const stayedLoggedIn = async () => {
+  // Checks for token in local storage
+  const token = window.localStorage.getItem('token');
+
+  if (token) {
+    const userResponse = await axios.get('http://localhost:3000/auth/me',
+    {
+      headers: {
+        authorization: token,
+      },
+    });
+
+    const user = userResponse.data;
+
+    dispatch(storeUser(user));
+
+    navigate('/home');
+  }
+};
+stayedLoggedIn();
+}, []);
 
   return (
     <>
@@ -45,7 +75,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/all' element={<Products />} />
-              <button onClick={ Logout }>Logout</button>
+              {/* <button onClick={ Logout }>Logout</button> */}
             </>
             ) :
             (

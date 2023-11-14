@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Axios } from 'axios';
+import axios from 'axios';
+import { useSelector, useDispatch } from "react-redux";
+
+import { storeUser } from "../../app/users/users";
 
 const Login = () => {
 
-  const axios = new Axios();
-
+  const navigate = useNavigate()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
+
+  const loggedInUser = useSelector((state) => state.user) 
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -41,13 +46,13 @@ const login = async (username, password) => {
 
   const user = userResponse.data;
 
-  // setUser(user);
+  dispatch(storeUser(user))
 
   navigate('/home');
 
 
   } catch (e) {
-    console.log('There was an error logging in');
+    console.log(e);
   };
 
   // console.log('Login button clicked');
