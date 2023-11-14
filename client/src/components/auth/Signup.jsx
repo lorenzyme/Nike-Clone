@@ -1,8 +1,14 @@
 import { useState } from "react";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { storeUser } from "../../app/users/users";
+
 
 const Signup = () => {
-
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -42,7 +48,7 @@ const Signup = () => {
         // console.log(user);
         // Shows all the user details in the console for the frontend/client - (to confirm it works)
   
-        setUser(user);
+        dispatch(storeUser(user));
   
         navigate('/home');
   
