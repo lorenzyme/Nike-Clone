@@ -1,38 +1,72 @@
 import { useState } from "react";
+import axios from 'axios';
 
 const Signup = () => {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  //POST INPUTS TO API HERE
-  const createUser = async () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    register(username, password, email, name);
+  } 
 
-  // AUTH INFORMATION GOES HERE
+  // AUTH CODE
+  const register = async (username, password, email, name) => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth/register', 
+        {
+          username,
+          password,
+          email,
+          name,
+        }
+      );
+  
+      const token = response.data;
+      // console.log(token); <--- confirms token is being sent to front end (you should see it in the console if it's connected and working/being sent from the backend properly)
+  
+        window.localStorage.setItem('token', token);
+  
+        const userResponse = await axios.get('http://localhost:3000/auth/me',
+        {
+          headers: {
+            authorization: token,
+          },
+        });
+  
+        const user = userResponse.data;
+  
+        // console.log(user);
+        // Shows all the user details in the console for the frontend/client - (to confirm it works)
+  
+        setUser(user);
+  
+        navigate('/home');
+  
+      } catch (e) {
+      console.log(e);
+    };
+  
+    // console.log('Register button clicked');
+    // console.log(`Username: ${username}`)
+    // console.log(`Password: ${password}`)
+  };
 
   return (
     <div>
       <h1 id="title">Let's Get Started!</h1>
       <form
-        onSubmit={(e) => {
-          //prevent default always happens first, just resets form
-          e.preventDefault();
-          createUser();
-          setEmail("");
-          setName("");
-          setUsername("");
-          setPassword("");
-
-          // const newUser = () =>{post request}
-          // newUser();
-        }}
+        onSubmit={ onSubmit }
         id="form"
       >
         <div>
           <h1 id="title"> Enter User Details Below </h1>
           Name
           <input
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             id="input-field"
@@ -40,6 +74,7 @@ const Signup = () => {
           />
           Email
           <input
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             id="input-field"
@@ -47,6 +82,7 @@ const Signup = () => {
           />
           Username
           <input
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             id="input-field"
@@ -54,6 +90,7 @@ const Signup = () => {
           />
           Password
           <input
+            placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

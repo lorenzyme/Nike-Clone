@@ -1,31 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const app = express();
-const port = 3000;
+const jwt = require('jsonwebtoken');
 
-// Gives access to the DB
+//Gives you access to the DB
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// For hashing password
+const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-// For tokens
-const jwt = require('jsonwebtoken');
 
-app.use(cors());
 app.use(bodyParser.json());
 
-// Route imports for express router
-app.use('/nike/accessories', require('./routes/accessories'));
-app.use('/nike/tops', require('./routes/tops'));
-app.use('/nike/bottoms', require('./routes/bottoms'));
-app.use('/nike/shoes', require('./routes/shoes'));
-app.use('/nike/users', require('./routes/users'));
-app.use('/nike/getAll', require('./routes/getAll'));
 
-
-// AUTH/TOKEN/HASHING
 // ----------------------------------------------------------------------------------------------------------
 // LOGIN
 app.post('/auth/login', async (req, res, next) => {
@@ -35,7 +19,7 @@ app.post('/auth/login', async (req, res, next) => {
     try {
 
         // Find a user
-        const user = await prisma.users.findUnique({
+        const user = await prisma.accounts.findUnique({
             where: {
                 username,
             },
@@ -69,15 +53,16 @@ app.post('/auth/login', async (req, res, next) => {
 });
 // ----------------------------------------------------------------------------------------------------------
 
+
 // ----------------------------------------------------------------------------------------------------------
 // REGISTER
 app.post('/auth/register', async (req, res, next) => {
 
     //destructuring
-    const { username, password, email, name } = req.body;
+    const { username, password } = req.body;
 
     try {
-        const user = await prisma.users.findUnique({
+        const user = await prisma.accounts.findUnique({
             where: {
                 username,
             },
@@ -95,12 +80,10 @@ app.post('/auth/register', async (req, res, next) => {
         // Comment out "newUser" if you want to demo this and see what the hashedPassword looks like
         // console.log(hashedPassword);
 
-        const newUser = await prisma.users.create({
+        const newUser = await prisma.accounts.create({
             data: {
-                name,
                 username,
                 password: hashedPassword,
-                email,
             },
         });
 
@@ -112,6 +95,7 @@ app.post('/auth/register', async (req, res, next) => {
     };
 });
 // ----------------------------------------------------------------------------------------------------------
+
 
 // ----------------------------------------------------------------------------------------------------------
 // TOKEN AUTH
@@ -127,6 +111,6 @@ app.get('/auth/me', async (req, res, next) => {
 // ----------------------------------------------------------------------------------------------------------
 
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`)
 });

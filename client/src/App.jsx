@@ -9,8 +9,11 @@ import Checkout from "./components/checkout/Checkout";
 import Search from "./components/Search";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
+// import Logout from "./components/Logout";
 
 function App() {
+
+  const [user, setUser] = useState(null);
 
   return (
     <>
@@ -34,14 +37,25 @@ function App() {
         </div>
         <div id="main-section">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/single:id" element={<SingleItem />} />
-            <Route path='/all' element={<Products />} />
+            {user ? (
+            <>
+              <Route path='/home' element={<Home />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/single:id" element={<SingleItem />} />
+              <Route path='/all' element={<Products />} />
+              <button onClick={ Logout }>Logout</button>
+            </>
+            ) :
+            (
+            <>
+              <Route path='/home' element={<Home />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </>
+           )}  
           </Routes>
         </div>
       </div>
