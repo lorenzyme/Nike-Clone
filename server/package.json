@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon"
   },
+  "prisma": {
+    "seed": "node ./prisma/seed/seed.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "@prisma/client": "^5.5.2",
     "bcrypt": "^5.1.1",

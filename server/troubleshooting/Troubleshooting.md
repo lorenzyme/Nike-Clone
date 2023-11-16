@@ -32,6 +32,12 @@
 1. CD into the server folder
 2. npx prisma migrate dev --name replaceThisName
 3. Replace "replaceThisName" and name your migration
+- This is for updating tables/names/columns
+
+# SEEDING THE DATABASE
+------------------------
+1. CD into the server folder
+2. npx prisma db seed
 
 # ERROR WITH .ENV AND MIGRATION
 - If you can't migrate the schema to your database because it says there's a port error...
