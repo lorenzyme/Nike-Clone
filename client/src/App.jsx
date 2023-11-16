@@ -13,7 +13,6 @@ import Checkout from "./components/checkout/Checkout";
 import Search from "./components/Search";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
-// import Logout from "./components/Logout";
 
 function App() {
 
@@ -45,6 +44,12 @@ useEffect(() => {
 stayedLoggedIn();
 }, []);
 
+const Logout = () => {
+  window.localStorage.removeItem('token');
+  dispatch(storeUser(null));
+  location.reload();
+  };
+
   return (
     <>
       <div id="container">
@@ -64,6 +69,7 @@ stayedLoggedIn();
           <Link to="/all" id="products-link">
 
           </Link>
+          <button onClick={ Logout }>Logout</button>
         </div>
         <div id="main-section">
           <Routes>
@@ -75,7 +81,6 @@ stayedLoggedIn();
               <Route path="/search" element={<Search />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/all' element={<Products />} />
-              {/* <button onClick={ Logout }>Logout</button> */}
             </>
             ) :
             (

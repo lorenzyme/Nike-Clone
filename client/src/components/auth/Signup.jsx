@@ -17,7 +17,14 @@ const Signup = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     register(username, password, email, name);
-  } 
+  };
+
+  // const passLength = () => {
+  //   if (password.length < 8) {
+  //     console.log("Password must be more than 8 characters");
+  //     window.alert("Password must be more than 8 characters");
+  //   };
+  // };
 
   // AUTH CODE
   const register = async (username, password, email, name) => {
@@ -97,8 +104,10 @@ const Signup = () => {
           Password
           <input
             placeholder="Password"
+            minlength="8"
             type="password"
             value={password}
+            size="25"
             onChange={(e) => setPassword(e.target.value)}
             id="input-field"
           />

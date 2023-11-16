@@ -88,12 +88,9 @@ app.post('/auth/register', async (req, res, next) => {
 
         if (user) {
             return res.status(409).send({ message: "User already exists" });
-        }
+        };
 
         const hashedPassword = bcrypt.hashSync(password, 10);
-
-        // Comment out "newUser" if you want to demo this and see what the hashedPassword looks like
-        // console.log(hashedPassword);
 
         const newUser = await prisma.users.create({
             data: {
