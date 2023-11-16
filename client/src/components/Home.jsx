@@ -1,5 +1,5 @@
 import Carousel from "./Carousel";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Home = () => {
   return (
@@ -10,12 +10,10 @@ const Home = () => {
           <button>Women</button>
           <button>Kids</button>
         </div>
-        <div id="secondaryNav">
-        <Link to="/search" id="search-link">
-              🔍
-          </Link>
-              {/* wishlist button goes here */}
-              {/* cart button goes here */}
+        <div className="secondary-navbar">
+        <SearchBar />
+        {/* wishlist button goes here */}
+        {/* cart button goes here */}
         </div>
         <div id="scroll-container">
           <h1 id="scrolling-text">JUST DO IT.</h1>
@@ -33,7 +31,7 @@ const Home = () => {
           alt="product and models displayed with holiday backdrop"
         ></img>
 
-        <h1 id="JDI">JUST DO IT</h1>
+        <h1 id="just-do-it">JUST DO IT</h1>
         <br />
         <br />
         <br />
