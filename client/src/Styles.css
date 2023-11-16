@@ -306,11 +306,6 @@ button:focus-visible {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-input {
-  text-align: center;
-  display: flex;
-}
-
 
 #chkout-button {
   border: solid rgb(197, 197, 197);
@@ -320,10 +315,73 @@ input {
   color: #dadada7a;
 }
 
-#JDI{
+
+#just-do-it{
   font-size: 100px;
 }
 
+/* search bar and input fields */
+
+#search-bar-container {
+  color: #213547;
+  text-align: center;
+  background-color: transparent;
+  border: none; 
+  margin-left: 900px;
+  width: 200px;
+  height: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 15px; 
+  box-shadow: 0px 0px 8px #ddd; 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#search-bar {
+  border: none;
+  outline: none;
+  text-align: center;
+  position: absolute;
+  top: 95px;
+  left: 970px;
+  color: #213547;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#search-bar:hover {
+  border: none;
+  outline: none;
+  color: #000000;
+}
+
+#search-icon {
+  color: #213547;
+  position: absolute;
+  left: 945px;
+  top: 92px;
+  font-size: x-large;
+}
+
+#submit-button{
+  color: #9c9c9c;
+  position: absolute;
+  left: 1210px;
+  top: 82px;
+  font-size: 40px;
+}
+
+#submit-button:hover {
+  color: #213547;
+}
+
+
+#filter-button{
+  color: #9c9c9c;
+  position: absolute;
+  left: 1180px;
+  top: 91px;
+  font-size: x-large;
+}
 
 /* the thin text used in product descriptions and various other website elements */
 .desc-text{

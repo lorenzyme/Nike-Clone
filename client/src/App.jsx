@@ -10,7 +10,6 @@ import Home from "./components/Home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Checkout from "./components/checkout/Checkout";
-import Search from "./components/Search";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 // import Logout from "./components/Logout";
@@ -72,7 +71,6 @@ stayedLoggedIn();
               <Route path='/home' element={<Home />} />
               <Route path="/" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/search" element={<Search />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/all' element={<Products />} />
               {/* <button onClick={ Logout }>Logout</button> */}
