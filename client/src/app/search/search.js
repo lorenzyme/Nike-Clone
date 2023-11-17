@@ -20,6 +20,7 @@ export const search = (state = initialState(), action = {}) => {
         [SEARCH_PRODUCTS]: handleSearch
     }
 
+    
     const reducer = actionHandlers[action.type];
     return reducer ? reducer(state, action): state
 };
