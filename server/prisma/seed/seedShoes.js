@@ -1,4 +1,4 @@
-export const shoes = [
+const shoes = [
     {
         id: 1, 
         itemname: 'AF1',  
@@ -32,4 +32,6 @@ export const shoes = [
         cost: '$500', 
         img: 'image link/url goes here'
     }
-];
+]
+
+module.exports = shoes;

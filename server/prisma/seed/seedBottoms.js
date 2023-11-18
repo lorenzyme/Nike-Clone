@@ -1,4 +1,4 @@
-export const bottoms = [
+const bottoms = [
     {
         id: 1, 
         itemname: 'joggers',  
@@ -33,3 +33,5 @@ export const bottoms = [
         img: 'image link/url goes here'
     }
 ];
+
+module.exports = bottoms;
