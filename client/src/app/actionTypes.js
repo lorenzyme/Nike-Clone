@@ -1,6 +1,6 @@
 // this is where we define our action types
 
-export const getAllProducts = "getAllProducts"
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 
 export const STORE_USER = "STORE_USER"
 

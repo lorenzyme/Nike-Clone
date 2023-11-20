@@ -12,12 +12,14 @@ import Login from "./components/auth/Login";
 import Checkout from "./components/checkout/Checkout";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
+import Search from "./components/Search";
 
 function App() {
 
 const user = useSelector((state) => state.users);
-const dispatch = useDispatch()
-const navigate = useNavigate()
+const dispatch = useDispatch();
+const navigate = useNavigate();
+const location = useLocation();
 
 useEffect(() => {
 
@@ -68,7 +70,7 @@ const Logout = () => {
           <Link to="/all" id="products-link">
 
           </Link>
-          <button onClick={ Logout }>Logout</button>
+          {/* <button onClick={ Logout }>Logout</button> */}
         </div>
         <div id="main-section">
           <Routes>
@@ -79,6 +81,7 @@ const Logout = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/all' element={<Products />} />
+              <Route path='/search:itemName' element={<Search />}></Route>
             </>
             ) :
             (
@@ -87,6 +90,7 @@ const Logout = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path='/search/:itemName' element={<Search  />}></Route>
             </>
            )}  
           </Routes>

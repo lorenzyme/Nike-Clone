@@ -16,7 +16,7 @@ model accessories {
   forkids  Boolean?
   details  String?  @db.VarChar(1000)
   cost     String?  @db.VarChar(50)     
-  img      String   @db.VarChar(255)
+  img      String?  @db.VarChar(255)
 }
 
 model bottoms {
@@ -28,7 +28,7 @@ model bottoms {
   forkids  Boolean?
   details  String?  @db.VarChar(1000)
   cost     String?  @db.VarChar(50)     
-  img      String   @db.VarChar(255)
+  img      String?  @db.VarChar(255)
 }
 
 model shoes {
@@ -40,7 +40,7 @@ model shoes {
   forkids  Boolean?
   details  String?  @db.VarChar(1000)
   cost     String?  @db.VarChar(50)
-  img      String   @db.VarChar(255)
+  img      String?  @db.VarChar(255)
 }
 
 model tops {
@@ -52,7 +52,7 @@ model tops {
   forkids  Boolean?
   details  String?  @db.VarChar(1000)
   cost     String?  @db.VarChar(50)
-  img      String   @db.VarChar(255)
+  img      String?  @db.VarChar(255)
 }
 
 model users {

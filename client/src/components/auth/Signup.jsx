@@ -104,7 +104,7 @@ const Signup = () => {
           Password
           <input
             placeholder="Password"
-            minlength="8"
+            minLength="8"
             type="password"
             value={password}
             size="25"

@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => {
 
-
+  const { itemName } = useParams();
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
 
   return (
     <>
