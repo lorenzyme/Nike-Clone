@@ -1,4 +1,4 @@
-import { getAllProducts } from "../actionTypes";
+import { GET_ALL_PRODUCTS } from "../actionTypes";
 
 const initialState = () => {
     return {
@@ -11,7 +11,7 @@ const initialState = () => {
 
 export const allProducts = (payload) => {
     return {
-        type: getAllProducts,
+        type: GET_ALL_PRODUCTS,
         payload
     }
 };
@@ -34,7 +34,7 @@ export const handleAllProducts = (state, action) => {
 export const products = (state = initialState(), action = {}) => {
     // this object has a key of action type and the value is the action handler
     const actionHandlers = {
-        [getAllProducts] : handleAllProducts
+        [GET_ALL_PRODUCTS] : handleAllProducts
     };
     const reducer = actionHandlers[action.type];
     return reducer ? reducer(state,action) : state
