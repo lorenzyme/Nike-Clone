@@ -1,4 +1,4 @@
-export const accessories = [
+const accessories = [
     {
         id: 1, 
         itemname: 'necklace',  
@@ -23,7 +23,7 @@ export const accessories = [
     },
     {
         id: 3, 
-        itemname: 'watch',  
+        itemname: 'watch', 
         color: 'silver', 
         size: '40mm', 
         gender: 'men', 
@@ -33,3 +33,5 @@ export const accessories = [
         img: 'image link/url goes here',
     }
 ];
+
+module.exports = accessories;

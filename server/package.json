@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "dbreset": "node ./prisma/seed/dbReset.js"
   },
   "prisma": {
     "seed": "node ./prisma/seed/seed.js"
@@ -13,7 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@prisma/client": "^5.5.2",
     "axios": "^1.6.2",

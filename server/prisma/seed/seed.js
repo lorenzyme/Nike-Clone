@@ -1,40 +1,79 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-import { accessories } from './seedAccessories.js';
-import { tops } from './seedTops.js';
-import { bottoms } from './seedBottoms.js';
-import { shoes } from './seedShoes.js';
+const accessories = require('./seedAccessories.js');
+const tops = require('./seedTops.js');
+const bottoms = require('./seedBottoms.js');
+const shoes = require('./seedShoes.js');
 
 async function main() {
-
   // Seed accessories
-  for (let accessories of accessories) {
+  for (let accessory of accessories) {
     await prisma.accessories.create({
-      data: accessories
+      data: 
+      {
+        itemname: accessory.itemname,
+        color: accessory.color,
+        size: accessory.size,
+        gender: accessory.gender,
+        forkids: accessory.forkids,
+        details: accessory.details,
+        cost: accessory.cost,
+        img: accessory.img
+      }
     })
   }
 
-
-  // Seed tops
-  for (let tops of tops) {
+  // // Seed tops
+  for (let top of tops) {
     await prisma.tops.create({
-      data: tops
+      data: 
+      {
+        itemname: top.itemname,
+        color: top.color,
+        size: top.size,
+        gender: top.gender,
+        forkids: top.forkids,
+        details: top.details,
+        cost: top.cost,
+        img: top.img
+      }
     })
   }
 
 
-  // Seed bottoms
-  for (let bottoms of bottoms) {
+  // // Seed bottoms
+  for (let bottom of bottoms) {
     await prisma.bottoms.create({
-      data: bottoms
+      data: 
+      {
+        itemname: bottom.itemname,
+        color: bottom.color,
+        size: bottom.size,
+        gender: bottom.gender,
+        forkids: bottom.forkids,
+        details: bottom.details,
+        cost: bottom.cost,
+        img: bottom.img
+      }
     })
   }
 
-  // Seed shoes
-  for (let shoes of shoes) {
+  // // Seed shoes
+  for (let shoe of shoes) {
     await prisma.shoes.create({
-      data: shoes
+      data: 
+      {
+        itemname: shoe.itemname,
+        color: shoe.color,
+        size: shoe.size,
+        gender: shoe.gender,
+        forkids: shoe.forkids,
+        details: shoe.details,
+        cost: shoe.cost,
+        img: shoe.img
+      }
     })
   }
 }
