@@ -12,6 +12,7 @@ import Login from "./components/auth/Login";
 import Checkout from "./components/checkout/Checkout";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
+import Wishlist from "./components/Wishlist";
 
 function App() {
 
@@ -72,6 +73,9 @@ const Logout = () => {
         </div>
         <div id="main-section">
           <Routes>
+            <>
+              <Route path= "/wishlist" element={<Wishlist />} />     
+            </>
             {user ? (
             <>
               <Route path='/home' element={<Home />} />
