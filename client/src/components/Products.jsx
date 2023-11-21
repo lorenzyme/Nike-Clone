@@ -9,7 +9,7 @@ const Products = () =>{
 
     const location = useLocation();
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products );
+    const products = useSelector((state) => state.products);
 
     useEffect(()=>{
         const getAllProducts = async () => {

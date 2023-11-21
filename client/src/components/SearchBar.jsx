@@ -3,11 +3,12 @@ import { FiSearch } from "react-icons/fi";
 import { CgCheck } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import axios from "axios";
 import { allProducts } from "../app/products/products";
+import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
 
+  const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
   useEffect(() => {
