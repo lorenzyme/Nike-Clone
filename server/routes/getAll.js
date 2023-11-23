@@ -12,16 +12,16 @@ router.get('/', async (req, res) => {
 
         const bottoms = await prisma.bottoms.findMany()
         const tops = await prisma.tops.findMany()
-        const shoes = await prisma.shoes.findMany()
+        const shoes = await prisma.shoes.findMany() 
         const accessories = await prisma.accessories.findMany()
 
-        const products = {bottoms, tops, shoes, accessories};
-        console.log(products)
+        const products = { bottoms, tops, shoes, accessories };
+        // console.log(products)
         res.json(products);
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong finding all items'});
+        res.status(500).json({ error: 'Something went wrong finding all items' });
     }
 })
 

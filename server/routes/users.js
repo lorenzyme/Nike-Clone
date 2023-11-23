@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong finding users'});
+        res.status(500).json({ error: 'Something went wrong finding users' });
     }
 })
 
@@ -36,10 +36,16 @@ router.post('/new', async (req, res) => {
                 email
             }
         })
+        //
+        const newWishlist = await prisma.wishlist.create({
+            data: {
+                userId: newUser.id
+            }
+        })
         res.json(newUser);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong creating a new user'});
+        res.status(500).json({ error: 'Something went wrong creating a new user' });
     }
 })
 
@@ -62,7 +68,7 @@ router.put('/:id', async (req, res) => {
         const { name, username, password, email } = req.body;
 
         const updateUser = await prisma.users.update({
-            where: {id: parseInt(userId)},
+            where: { id: parseInt(userId) },
             data: {
                 name,
                 username,
@@ -70,10 +76,10 @@ router.put('/:id', async (req, res) => {
                 email
             }
         });
-       return  res.json(updateUser);
+        return res.json(updateUser);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong updating a user'});
+        res.status(500).json({ error: 'Something went wrong updating a user' });
     }
 })
 
@@ -95,12 +101,12 @@ router.delete('/:id', async (req, res) => {
     try {
         const userId = parseInt(req.params.id);
         await prisma.users.delete({
-            where: {id: userId}
+            where: { id: userId }
         })
-        return res.json({message: 'User deleted'});
+        return res.json({ message: 'User deleted' });
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong deleting a user'});
+        res.status(500).json({ error: 'Something went wrong deleting a user' });
     }
 })
 

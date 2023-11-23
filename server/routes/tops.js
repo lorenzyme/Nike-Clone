@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
 
     try {
         const tops = await prisma.tops.findMany()
+        console.log(tops);
         res.json(tops);
 
     } catch (error) {
