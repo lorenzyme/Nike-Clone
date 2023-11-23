@@ -2,6 +2,7 @@ import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { storeUser } from "./app/users/users";
+import { allProducts } from "./app/products/products";
 import axios from 'axios';
 import "./Styles.css";
 
@@ -13,6 +14,7 @@ import Checkout from "./components/checkout/Checkout";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 import Search from "./components/Search";
+
 
 function App() {
 
@@ -39,10 +41,18 @@ useEffect(() => {
 
     dispatch(storeUser(user));
 
-    navigate('/home');
   }
 };
 stayedLoggedIn();
+}, []);
+
+useEffect(() => {
+  const getAllProducts = async () => {
+    const response = await fetch("http://localhost:3000/nike/getAll");
+    const data = await response.json();
+    dispatch(allProducts(data));
+  };
+  getAllProducts();
 }, []);
 
 const Logout = () => {
@@ -70,7 +80,7 @@ const Logout = () => {
           <Link to="/all" id="products-link">
 
           </Link>
-          {/* <button onClick={ Logout }>Logout</button> */}
+          <button onClick={ Logout }>Logout</button>
         </div>
         <div id="main-section">
           <Routes>
