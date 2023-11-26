@@ -1,7 +1,9 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -10,11 +12,13 @@ const Home = () => {
           <button>Women</button>
           <button>Kids</button>
         </div>
+
         <div className="secondary-navbar">
-        <SearchBar />
-        {/* wishlist button goes here */}
-        {/* cart button goes here */}
+          <SearchBar />
+          <button onClick={() => navigate('/wishlist')}>Wishlist</button>
+          {/* cart button goes here */}
         </div>
+        
         <div id="scroll-container">
           <h1 id="scrolling-text">JUST DO IT.</h1>
         </div>
