@@ -13,6 +13,9 @@ import Checkout from "./components/checkout/Checkout";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 import Search from "./components/Search";
+import Kids from "./components/products/Kids";
+import Womens from "./components/products/Womens";
+import Mens from "./components/products/Mens";
 
 function App() {
 
@@ -67,9 +70,6 @@ const Logout = () => {
           <Link to="/checkout" id="checkout-link">
             Checkout
           </Link>
-          <Link to="/all" id="products-link">
-
-          </Link>
           {/* <button onClick={ Logout }>Logout</button> */}
         </div>
         <div id="main-section">
@@ -77,20 +77,26 @@ const Logout = () => {
             {user ? (
             <>
               <Route path='/home' element={<Home />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/*" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/all' element={<Products />} />
-              <Route path='/search:itemName' element={<Search />}></Route>
+              <Route path='/search:itemName' element={<Search />} />
+              <Route path='/mens' element={<Mens />} />
+              <Route path='/womens' element={<Womens />} />
+              <Route path='/kids' element={<Kids />} />
             </>
             ) :
             (
             <>
               <Route path='/home' element={<Home />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/*" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path='/search/:itemName' element={<Search  />}></Route>
+              <Route path='/search/:itemName' element={<Search  />} />
+              <Route path='/mens' element={<Mens />} />
+              <Route path='/womens' element={<Womens />} />
+              <Route path='/kids' element={<Kids />} />
             </>
            )}  
           </Routes>

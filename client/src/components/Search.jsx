@@ -33,12 +33,12 @@ const Search = () => {
         return ( 
           <div className="product-details" key={product.id}>
             <img src={`${product.imageUrl}`}/>
-            <div>
+            <card id='product-card'>
               <h4>{product.itemname}</h4>
               <h4>{product.cost}</h4>
               <h4>{product.color}</h4>
               <p>{product.details}</p>
-            </div>
+            </card>
           </div>
         )
       })}

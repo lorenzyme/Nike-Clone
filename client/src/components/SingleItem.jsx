@@ -14,7 +14,7 @@ const SingleItem = () => {
         const data = await response.json();
         setProduct(data.data.product)
       }
-      GetProducts();
+      getProducts();
     },[])
 
     

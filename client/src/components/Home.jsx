@@ -1,14 +1,39 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
+import Mens from "./products/Mens";
+import Womens from "./products/Womens";
+import Kids from "./products/Kids";
+
 
 const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <div>
         <div id="catagories-bar">
-          <button>Men</button>
-          <button>Women</button>
-          <button>Kids</button>
+          <Routes>
+            <Route path='/mens' element={<Mens />} />
+            <Route path='/womens' element={<Womens />}/>
+            <Route path='/kids' element={<Kids />}/>
+          </Routes>
+          <Link to='/mens'>
+            <button>
+                Men
+            </button>
+          </Link>
+          <Link to='/womens'>
+            <button>
+                Women
+            </button>
+          </Link>
+          <Link to='/kids'>
+            <button>
+                Kids
+            </button>
+          </Link>
         </div>
         <div className="secondary-navbar">
         <SearchBar />
