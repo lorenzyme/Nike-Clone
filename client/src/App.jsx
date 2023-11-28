@@ -13,6 +13,8 @@ import Checkout from "./components/checkout/Checkout";
 import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 import Search from "./components/Search";
+import { allProducts } from "./app/products/products";
+
 
 function App() {
 
@@ -20,6 +22,15 @@ const user = useSelector((state) => state.users);
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const location = useLocation();
+
+useEffect(() => {
+  const getAllProducts = async () => {
+    const response = await fetch("http://localhost:3000/nike/getAll");
+    const data = await response.json();
+    dispatch(allProducts(data));
+  };
+  getAllProducts();
+}, []);
 
 useEffect(() => {
 
@@ -90,6 +101,7 @@ const Logout = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path='/all' element={<Products />} />
               <Route path='/search/:itemName' element={<Search  />}></Route>
             </>
            )}  
