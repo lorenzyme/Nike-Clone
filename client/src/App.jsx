@@ -10,7 +10,6 @@ import Home from "./components/Home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Checkout from "./components/checkout/Checkout";
-import Products from "./components/Products";
 import SingleItem from "./components/SingleItem";
 import Wishlist from "./components/Wishlist";
 import Search from "./components/Search";
@@ -95,7 +94,6 @@ const Logout = () => {
               <Route path="/" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
-              <Route path='/all' element={<Products />} />
               <Route path='/search:itemName' element={<Search />}></Route>
             </>
             ) :
@@ -105,7 +103,6 @@ const Logout = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path='/all' element={<Products />} />
               <Route path='/search/:itemName' element={<Search  />}></Route>
             </>
            )}  
