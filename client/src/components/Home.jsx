@@ -1,6 +1,8 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
+import Cart from "./checkout/Cart";
 import { useNavigate } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
 
 const Home = () => {
   const navigate = useNavigate()
@@ -15,8 +17,8 @@ const Home = () => {
 
         <div className="secondary-navbar">
           <SearchBar />
-          <button onClick={() => navigate('/wishlist')}>Wishlist</button>
-          {/* cart button goes here */}
+          <button id="wishlist-button" onClick={() => navigate('/wishlist')}><FaRegHeart /></button>
+          <Cart />
         </div>
         
         <div id="scroll-container">

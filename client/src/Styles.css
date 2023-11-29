@@ -398,3 +398,69 @@ button:focus-visible {
   font-weight: bold;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+#cart-button{
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: x-large;
+  background-color: rgba(255, 250, 250, 0);
+}
+
+#wishlist-button{
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  font-size: x-large;
+  background-color: rgba(255, 250, 250, 0);
+}
+
+/*  
+ display: flex;
+flex-direction: column;
+ */
+ 
+.product-details{
+  color: #213547;
+  text-align: center;
+  background-color: transparent;
+  border: solid;
+  border-width: 1px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 15px; 
+  box-shadow: 0px 0px 8px #ddd; 
+  float:inline-end;
+  margin-block: 10px;
+  margin-inline-start: 20px;
+  margin-inline-end: 150px;
+  width:33%;
+}
+
+h4{
+  font-weight: 300;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+p{
+  font-weight: 300;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#add-to-cart{
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  color: #213547;
+  box-shadow: 0px 0px 8px #ddd; 
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#add-to-cart:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+#product-img{
+
+  max-width: 300px;
+}
