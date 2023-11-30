@@ -1,8 +1,12 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
 import Cart from "./checkout/Cart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
+
+import Mens from "./products/Mens";
+import Womens from "./products/Womens";
+import Kids from "./products/Kids";
 
 const Home = () => {
   const navigate = useNavigate()
@@ -10,9 +14,26 @@ const Home = () => {
     <>
       <div>
         <div id="catagories-bar">
-          <button>Men</button>
-          <button>Women</button>
-          <button>Kids</button>
+          <Routes>
+            <Route path='/mens' element={<Mens />}/>
+            <Route path='/womens' element={<Womens />}/>
+            <Route path='/kids' element={<Kids />}/>
+          </Routes>
+          <Link to='/mens' id='mens-button-link'>
+            <button>
+              Men
+            </button>
+          </Link>
+          <Link to='/womens' id='womens-button-link'>
+            <button>
+              Women
+            </button>
+          </Link>
+          <Link to='/kids' id='kids-button-link'>
+            <button>
+              Kids
+            </button>
+            </Link>
         </div>
 
         <div className="secondary-navbar">

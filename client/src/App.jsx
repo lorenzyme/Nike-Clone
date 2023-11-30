@@ -90,8 +90,8 @@ const Logout = () => {
             </>
             {user ? (
             <>
-              <Route path='/home' element={<Home />} />
-              <Route path="/" element={<Home />} />
+              <Route path='/home/*' element={<Home />} />
+              <Route path="/*" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/search:itemName' element={<Search />}></Route>
@@ -99,8 +99,8 @@ const Logout = () => {
             ) :
             (
             <>
-              <Route path='/home' element={<Home />} />
-              <Route path="/" element={<Home />} />
+              <Route path='/home/*' element={<Home />} />
+              <Route path="/*" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path='/search/:itemName' element={<Search  />}></Route>
