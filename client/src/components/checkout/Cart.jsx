@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector, useDispatch, } from "react-redux";
-import { cartItems, removeFromCart } from "../../app/products/removeFromCart";
-
+import { removeFromCart } from "../../app/products/removeFromCart";
+import { cartItems } from "../../app/products/addToCart";
 
 
 const Cart = () => {
-//   const products = useSelector((state) => state.products);
+
+  const dispatch = useDispatch();
+  
+  const cartItems = useSelector((state) => state.products);
+
 
   const [modal, setModal] = useState(false);
 
@@ -19,6 +23,7 @@ const Cart = () => {
   } else {
     document.body.classList.remove("active-modal");
   }
+  
 
   return (
     <>

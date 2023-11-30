@@ -2,10 +2,7 @@ import { ADD_TO_CART } from "../actionTypes";
 
 const initialState = () => {
     return {
-        tops: [],
-        bottoms: [],
-        shoes: [],
-        accessories: []
+        cartItems: []
     }
 };
 

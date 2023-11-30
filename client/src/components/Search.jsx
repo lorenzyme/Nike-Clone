@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AddToCart from "./checkout/addToCart";
+import SearchBar from "./SearchBar";
 
 const Search = () => {
   const { itemName } = useParams();
@@ -19,6 +20,7 @@ const Search = () => {
 
   return (
     <div>
+      <button>clickme</button>
       {convertToArray(products).map((product) => {
         return (
           <div className="product-details" key={product.id}>
@@ -37,7 +39,9 @@ const Search = () => {
           </div>
         );
       })}
+
     </div>
+    
   );
 };
 
