@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { addToCart } from "../../app/cart/cartSlice";
 import { allProducts } from "../../app/products/products";
 
 const Womens = () => {
@@ -9,6 +9,11 @@ const Womens = () => {
     const location = useLocation()
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
+
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+        console.log(`added ${product.itemname} to cart!`);
+      }
 
     useEffect(() => {
         const getData = async () => {
@@ -43,6 +48,7 @@ const Womens = () => {
                             <h4>{product.cost}</h4>
                             <h4>{product.color}</h4>
                             <p>{product.details}</p>
+                            <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
                           </div>
                         </div>
                       )

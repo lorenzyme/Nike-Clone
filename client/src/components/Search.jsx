@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import AddToCart from "./checkout/addToCart";
+import { addToCart } from "../app/cart/cartSlice";
 
 const Search = () => {
   const { itemName } = useParams();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+    console.log(`added ${product.itemname} to cart!`);
+  }
 
   const convertToArray = (productsObj) => {
     const productCategoryArrays = Object.values(productsObj);
@@ -32,7 +37,7 @@ const Search = () => {
               <h4>{product.cost}</h4>
               <h4>{product.color}</h4>
               <p>{product.details}</p>
-              <AddToCart />
+              <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
             </div>
           </div>
         );
