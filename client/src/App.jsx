@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { storeUser } from "./app/users/users";
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Styles.css";
 
 

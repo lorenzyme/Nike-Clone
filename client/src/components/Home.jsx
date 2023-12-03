@@ -39,7 +39,7 @@ const Home = () => {
         <div className="secondary-navbar">
           <SearchBar />
           <button id="wishlist-button" onClick={() => navigate('/wishlist')}><FaRegHeart /></button>
-          <Cart />
+         <Cart />
         </div>
         
         <div id="scroll-container">
