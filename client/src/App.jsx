@@ -15,6 +15,7 @@ import SingleItem from "./components/SingleItem";
 import Wishlist from "./components/Wishlist";
 import Search from "./components/Search";
 import { allProducts } from "./app/products/products";
+import Products from "./components/products/Products";
 
 
 function App() {
@@ -28,8 +29,8 @@ useEffect(() => {
   const getAllProducts = async () => {
     const response = await fetch("http://localhost:3000/nike/getAll");
     const data = await response.json();
-    const productResponse = await fetch("http://localhost:3000/nike/products/");
-    const productData = await productResponse.json();
+    // const productResponse = await fetch("http://localhost:3000/nike/products/");
+    // const productData = await productResponse.json();
     console.log(productData);
     dispatch(allProducts(data));
   };
@@ -54,7 +55,7 @@ useEffect(() => {
 
     dispatch(storeUser(user));
 
-    navigate('/home');
+
   }
 };
 stayedLoggedIn();
@@ -65,10 +66,39 @@ const Logout = () => {
   dispatch(storeUser(null));
   location.reload();
   };
+  const testGetWishlist = async () => {
+        const token = window.localStorage.getItem('token')
+        const response = await fetch("http://localhost:3000/nike/wishlistItem/", {
+          headers: {
+            authorization: token,
+          }
+        });
+        const data = await response.json();
+        console.log(data);
+      };
+      // const testCreation = async () => {
+      //   const token = window.localStorage.getItem('token');
+      //       const response = await fetch("http://localhost:3000/nike/wishlistItem/new", {
+      //           headers: {
+      //             authorization: token,
+      //             "Content-Type": "application/json"
+      //           },
+      //           body: JSON.stringify({
+      //             productId: 1,
+      //           }),
+      //           method: 'POST'
+      //         });
+          
+      //       const data = await response.json();
+      //       console.log(data);
+      //     };
 
   return (
     <>
       <div id="container">
+        <button onClick={testGetWishlist}>
+          Our new button!
+        </button>
         <div id="navbar">
           <Link to="/home" id="home-link">
             Home 
@@ -99,6 +129,7 @@ const Logout = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/search:itemName' element={<Search />}></Route>
+              <Route path='/products' element={<Products />} />
             </>
             ) :
             (
@@ -108,6 +139,7 @@ const Logout = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path='/search/:itemName' element={<Search  />}></Route>
+              <Route path='/products' element={<Products />} />
             </>
            )}  
           </Routes>
