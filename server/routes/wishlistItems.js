@@ -36,101 +36,63 @@ router.get('/', async (req, res) => {
 
 // ******************************************************************************************
 
-// MAKE A NEW PRODUCT
+// CREATE A WISHLIST ITEM
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, forkids, details, cost, img, category } = req.body;
-        const newProduct = await prisma.wishlistItem.create({
-            data: {
-                itemname,
-                color,
-                size,
-                forkids,
-                details,
-                cost,
-                img,
-                category
+        const { productId } = req.body
+        const token = req.headers.authorization;
+        const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const wishlist = await prisma.wishlist.findUnique({
+            where: {
+                userId: user.id
             }
-        })
-        res.json(newProduct);
+        
+        });
+        const newWishlistItem = await prisma.wishlistItem.create({
+            data: {
+                productId,
+                wishlistId: wishlist.id
+            }
+        });
+        res.json(newWishlistItem);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong creating a new product'});
+        res.status(500).json({error: 'Something went wrong creating a new wishlist item'});
     }
 })
 
 // POSTMAN "POST" ROUTE --> http://localhost:3000/nike/wishlistItem/new
 
-// BODY TEXT FOR POSTMAN TO MAKE A NEW PRODUCT
+// BODY TEXT FOR POSTMAN TO MAKE A NEW WISHLIST ITEM
 // {
-//     "id": 3,
-//     "itemname": "watch",
-//     "color": "gold",
-//     "size": "big"
-//     "forkids": false,
-//     "details": "some content",
-//     "cost": 5.70,
-//     "img": "put url here"
-//     "category": "accessories"
+//     "productId": 1
 // }
 
 // ******************************************************************************************
 
-// UPDATE AN EXISTING PRODUCT
-router.put('/:id', async (req, res) => {
-    try {
-        const wishlistItemId = parseInt(req.params.id);
-        const { itemname, color, size, forkids, details, cost, img, category } = req.body;
-
-        const updateItem = await prisma.wishlistItem.update({
-            where: {id: parseInt(wishlistItemId)},
-            data: {
-                itemname,
-                color,
-                size,
-                forkids,
-                details,
-                cost,
-                img,
-                category
-            }
-        });
-       return  res.json(updateItem);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Something went wrong updating a product'});
-    }
-})
-
-// POSTMAN "PUT" ROUTE --> http://localhost:3000/nike/wishlistItem/1
-// Change the "1" to the id number of the item you want to update
-
-// BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
-// {
-//     "itemname": "necklace",
-//     "color": "silver",
-//     "size": "28 inch",
-//     "forkids": false,
-//     "details": "some content",
-//     "cost": 5.70,
-//     "img": "put url here",
-//     "category": "shoes"
-// }
-
-// ******************************************************************************************
-
-// DELETE A PRODUCT
+// DELETE A WISHLIST ITEM
 router.delete('/:id', async (req, res) => {
     try {
+        const token = req.headers.authorization
+        const user = jwt.verify(token, proccess.env.JWT_SECRET_KEY)
+        const wishlist = await prisma.wishlist.findUnique({
+            where: {
+                userId: user.id
+            }
+        })
         const wishlistItemId = parseInt(req.params.id);
         await prisma.wishlistItem.delete({
-            where: {id: wishlistItemId}
-        })
-        return res.json({message: 'Product deleted'});
+            where: {
+                id: wishlistItemId,
+                wishlistId: wishlist.id
+            }
+
+        });
+        return res.json({message: 'Wishlist item deleted'});
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong deleting a product'});
+        res.status(500).json({error: 'Something went wrong deleting a wishlist item'});
     }
 })
 

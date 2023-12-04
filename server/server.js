@@ -24,6 +24,7 @@ app.use('/nike/shoes', require('./routes/shoes'));
 app.use('/nike/users', require('./routes/users'));
 app.use('/nike/getAll', require('./routes/getAll'));
 app.use('/nike/products', require('./routes/products'));
+app.use('/nike/wishlistItem', require('./routes/wishlistItems'))
 
 
 
