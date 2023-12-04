@@ -7,6 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model products {
+  id       Int      @id @default(autoincrement())
+  itemname String?  @db.VarChar(255)
+  color    String?  @db.VarChar(255)
+  size     String?  @db.VarChar(255)
+  gender   String?  @db.VarChar(255)
+  forkids  Boolean?
+  details  String?  @db.VarChar(1000)
+  cost     String?  @db.VarChar(50)     
+  img      String?  @db.VarChar(255)
+  category String? @db.VarChar(50)
+}
+
 model accessories {
   id       Int      @id @default(autoincrement())
   itemname String?  @db.VarChar(255)
@@ -89,4 +102,5 @@ model wishlistItem {
   id           Int         @id @default(autoincrement())
   wishlist     wishlist    @relation(fields: [wishlistId], references: [id])
   wishlistId   Int
+  productId    Int
 }

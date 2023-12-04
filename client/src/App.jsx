@@ -28,6 +28,9 @@ useEffect(() => {
   const getAllProducts = async () => {
     const response = await fetch("http://localhost:3000/nike/getAll");
     const data = await response.json();
+    const productResponse = await fetch("http://localhost:3000/nike/products/");
+    const productData = await productResponse.json();
+    console.log(productData);
     dispatch(allProducts(data));
   };
   getAllProducts();

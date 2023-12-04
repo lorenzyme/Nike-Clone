@@ -36,6 +36,12 @@ router.post('/new', async (req, res) => {
                 email
             }
         })
+        const newWishlist = await prisma.wishlist.create({
+            data: {
+                userId: newUser.id,
+                
+            }
+        })
         res.json(newUser);
     } catch (error) {
         console.log(error);

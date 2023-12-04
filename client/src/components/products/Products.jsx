@@ -8,7 +8,7 @@ const Products = () =>{
 
     useEffect(()=>{
         const getAllProducts = async () => {
-            const response = await fetch("http://localhost:3000/nike/getAll")
+            const response = await fetch("http://localhost:3000/nike/products/")
             const data = await response.json();
             setProducts(data);
         };
