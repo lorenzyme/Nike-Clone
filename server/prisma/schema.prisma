@@ -89,6 +89,8 @@ model cartItem {
   id       Int      @id @default(autoincrement())
   cart     cart     @relation(fields: [cartId], references: [id])
   cartId   Int
+  productId Int
+  quantity  Int
 }
 
 model wishlist {
