@@ -6,8 +6,26 @@ const accessories = require('./seedAccessories.js');
 const tops = require('./seedTops.js');
 const bottoms = require('./seedBottoms.js');
 const shoes = require('./seedShoes.js');
+const products = require('./seedProducts.js')
 
 async function main() {
+  // Seed products
+  for (let product of products) {
+    await prisma.products.create({
+      data: 
+      {
+        itemname: product.itemname,
+        color: product.color,
+        size: product.size,
+        gender: product.gender,
+        forkids: product.forkids,
+        details: product.details,
+        cost: product.cost,
+        img: product.img,
+        category: product.category
+      }
+    })
+  }
   // Seed accessories
   for (let accessory of accessories) {
     await prisma.accessories.create({

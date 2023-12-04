@@ -36,6 +36,7 @@ router.post('/new', async (req, res) => {
                 email
             }
         })
+       
         res.json(newUser);
     } catch (error) {
         console.log(error);
