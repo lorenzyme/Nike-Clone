@@ -9,98 +9,100 @@ datasource db {
 
 model products {
   id       Int      @id @default(autoincrement())
-  itemname String?  @db.VarChar(255)
+  name     String?  @db.VarChar(255)
   color    String?  @db.VarChar(255)
   size     String?  @db.VarChar(255)
   gender   String?  @db.VarChar(255)
   forkids  Boolean?
   details  String?  @db.VarChar(1000)
-  cost     String?  @db.VarChar(50)     
-  img      String?  @db.VarChar(255)
-  category String? @db.VarChar(50)
+  cost     String?  @db.VarChar(50)
+  imgUrl   String?  @db.VarChar(255)
+  category String?  @db.VarChar(50)
 }
 
 model accessories {
-  id       Int      @id @default(autoincrement())
-  itemname String?  @db.VarChar(255)
-  color    String?  @db.VarChar(255)
-  size     String?  @db.VarChar(255)
-  gender   String?  @db.VarChar(255)
-  forkids  Boolean?
-  details  String?  @db.VarChar(1000)
-  cost     String?  @db.VarChar(50)     
-  img      String?  @db.VarChar(255)
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  color   String?  @db.VarChar(255)
+  size    String?  @db.VarChar(255)
+  gender  String?  @db.VarChar(255)
+  forkids Boolean?
+  details String?  @db.VarChar(1000)
+  cost    String?  @db.VarChar(50)
+  imgUrl  String?  @db.VarChar(255)
 }
 
 model bottoms {
-  id       Int      @id @default(autoincrement())
-  itemname String?  @db.VarChar(255)
-  color    String?  @db.VarChar(255)
-  size     String?  @db.VarChar(255)
-  gender   String?  @db.VarChar(255)
-  forkids  Boolean?
-  details  String?  @db.VarChar(1000)
-  cost     String?  @db.VarChar(50)     
-  img      String?  @db.VarChar(255)
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  color   String?  @db.VarChar(255)
+  size    String?  @db.VarChar(255)
+  gender  String?  @db.VarChar(255)
+  forkids Boolean?
+  details String?  @db.VarChar(1000)
+  cost    String?  @db.VarChar(50)
+  imgUrl  String?  @db.VarChar(255)
 }
 
 model shoes {
-  id       Int      @id @default(autoincrement())
-  itemname String?  @db.VarChar(255)
-  color    String?  @db.VarChar(255)
-  size     String?  @db.VarChar(255)
-  gender   String?  @db.VarChar(255)
-  forkids  Boolean?
-  details  String?  @db.VarChar(1000)
-  cost     String?  @db.VarChar(50)
-  img      String?  @db.VarChar(255)
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  color   String?  @db.VarChar(255)
+  size    String?  @db.VarChar(255)
+  gender  String?  @db.VarChar(255)
+  forkids Boolean?
+  details String?  @db.VarChar(1000)
+  cost    String?  @db.VarChar(50)
+  imgUrl  String?  @db.VarChar(255)
 }
 
 model tops {
-  id       Int      @id @default(autoincrement())
-  itemname String?  @db.VarChar(255)
-  color    String?  @db.VarChar(255)
-  size     String?  @db.VarChar(255)
-  gender   String?  @db.VarChar(255)
-  forkids  Boolean?
-  details  String?  @db.VarChar(1000)
-  cost     String?  @db.VarChar(50)
-  img      String?  @db.VarChar(255)
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  color   String?  @db.VarChar(255)
+  size    String?  @db.VarChar(255)
+  gender  String?  @db.VarChar(255)
+  forkids Boolean?
+  details String?  @db.VarChar(1000)
+  cost    String?  @db.VarChar(50)
+  imgUrl  String?  @db.VarChar(255)
 }
 
 model users {
-  id       Int      @id @default(autoincrement())
-  name     String?  @db.VarChar(255)
-  email    String?  @db.VarChar(255)
-  username String?  @unique @db.VarChar(25)
-  password String?  @db.VarChar(255)
+  id       Int       @id @default(autoincrement())
+  name     String?   @db.VarChar(255)
+  email    String?   @db.VarChar(255)
+  username String?   @unique @db.VarChar(25)
+  password String?   @db.VarChar(255)
   carts    cart[]
   wishlist wishlist?
 }
 
 model cart {
- id        Int      @id @default(autoincrement())
- user      users    @relation(fields: [userId], references: [id])
- userId    Int 
- cartItems cartItem[]
+  id        Int        @id @default(autoincrement())
+  user      users      @relation(fields: [userId], references: [id])
+  userId    Int
+  cartItems cartItem[]
 }
 
 model cartItem {
-  id       Int      @id @default(autoincrement())
-  cart     cart     @relation(fields: [cartId], references: [id])
-  cartId   Int
+  id        Int  @id @default(autoincrement())
+  cart      cart @relation(fields: [cartId], references: [id])
+  cartId    Int
+  productId Int
+  quantity  Int
 }
 
 model wishlist {
- id        Int      @id @default(autoincrement())
- user      users    @relation(fields: [userId], references: [id])
- userId    Int      @unique
- wishlistItems wishlistItem[]
+  id            Int            @id @default(autoincrement())
+  user          users          @relation(fields: [userId], references: [id])
+  userId        Int            @unique
+  wishlistItems wishlistItem[]
 }
 
 model wishlistItem {
-  id           Int         @id @default(autoincrement())
-  wishlist     wishlist    @relation(fields: [wishlistId], references: [id])
-  wishlistId   Int
-  productId    Int
+  id         Int      @id @default(autoincrement())
+  wishlist   wishlist @relation(fields: [wishlistId], references: [id])
+  wishlistId Int
+  productId  Int
 }
