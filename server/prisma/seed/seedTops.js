@@ -1,7 +1,7 @@
 const tops = [
     {
         id: 1, 
-        itemname: 't-shirt',  
+        name: 't-shirt',  
         color: 'white', 
         size: 'small', 
         gender: 'men', 
@@ -12,7 +12,7 @@ const tops = [
     },
     {
         id: 2, 
-        itemname: 'long sleeve', 
+        name: 'long sleeve', 
         color: 'grey', 
         size: 'med', 
         gender: 'women', 
@@ -23,7 +23,7 @@ const tops = [
     },
     {
         id: 3, 
-        itemname: 'sweater',  
+        name: 'sweater',  
         color: 'black', 
         size: 'med', 
         gender: 'men', 

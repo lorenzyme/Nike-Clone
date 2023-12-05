@@ -33,7 +33,7 @@ const Products = () =>{
             {/* {products.map((product) => {
                 return (
                     <div>
-                        {product.itemname}
+                        {product.name}
                         {product.id}
 
                     </div>
@@ -42,7 +42,7 @@ const Products = () =>{
              {wishlist.map((wishlist) => {
                 return (
                     <div>
-                        {products[wishlist?.productId-1].itemname}
+                        {products[wishlist?.productId-1].name}
                         
 
                     </div>

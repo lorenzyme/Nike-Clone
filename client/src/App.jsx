@@ -128,7 +128,7 @@ const Logout = () => {
               <Route path="/*" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
-              <Route path='/search:itemName' element={<Search />}></Route>
+              <Route path='/search:name' element={<Search />}></Route>
               <Route path='/products' element={<Products />} />
             </>
             ) :
@@ -138,7 +138,7 @@ const Logout = () => {
               <Route path="/*" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path='/search/:itemName' element={<Search  />}></Route>
+              <Route path='/search/:name' element={<Search  />}></Route>
               <Route path='/products' element={<Products />} />
             </>
            )}  

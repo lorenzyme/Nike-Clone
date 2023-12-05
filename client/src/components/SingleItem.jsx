@@ -23,7 +23,7 @@ const SingleItem = () => {
     <div className="title">
         <h1 className="title">{ product.name }</h1>
 
-        <img src={`${product.imageUrl}`} />
+        <img src={`${product.imgUrl}`} />
         <p id="product-details">{product.details}</p>
         <h4 id="cost">${product.cost}</h4>
         <h4 id="color"> Color : [{product.color}]<p/></h4>

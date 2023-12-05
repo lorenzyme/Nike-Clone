@@ -1,7 +1,7 @@
 const accessories = [
     {
         id: 1, 
-        itemname: 'necklace',  
+        name: 'necklace',  
         color: 'gold', 
         size: '16in', 
         gender: 'men', 
@@ -12,7 +12,7 @@ const accessories = [
     },
     {
         id: 2, 
-        itemname: 'ring', 
+        name: 'ring', 
         color: 'rose gold', 
         size: '7mm', 
         gender: 'women', 
@@ -23,7 +23,7 @@ const accessories = [
     },
     {
         id: 3, 
-        itemname: 'watch', 
+        name: 'watch', 
         color: 'silver', 
         size: '40mm', 
         gender: 'men', 
