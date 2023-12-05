@@ -7,24 +7,24 @@ const prisma = new PrismaClient();
 
 // ******************************************************************************************
 
-// GET ALL THE WISHLIST ITEMS FOR A SPECIFIC USER
+// GET ALL THE WISHLISTITEMS FOR SPECIFIC USER
 router.get('/', async (req, res) => {
 
     try {
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const wishlist = await prisma.wishlist.findUnique({
+        const cart = await prisma.cart.findUnique({
             where: {
                 userId: user.id
             }
         });
 
-        const wishlistItems = await prisma.wishlistItem.findMany({
+        const cartItems = await prisma.cartItem.findMany({
             where: {
-                wishlistId: wishlist.id
+                cartId: cart.id
             }
         })
-        res.json(wishlistItems);
+        res.json(cartItems);
 
     } catch (error) {
         console.log(error);
@@ -43,19 +43,19 @@ router.post('/new', async (req, res) => {
         const { productId } = req.body
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const wishlist = await prisma.wishlist.findUnique({
+        const cart = await prisma.cart.findUnique({
             where: {
                 userId: user.id
             }
         
         });
-        const newWishlistItem = await prisma.wishlistItem.create({
+        const newCartItem = await prisma.cartItem.create({
             data: {
                 productId,
-                wishlistId: wishlist.id
+                cartId: cart.id
             }
         });
-        res.json(newWishlistItem);
+        res.json(newCartItem);
     } catch (error) {
         console.log(error);
         res.status(500).json({error: 'Something went wrong creating a new wishlist item'});
@@ -64,7 +64,7 @@ router.post('/new', async (req, res) => {
 
 // POSTMAN "POST" ROUTE --> http://localhost:3000/nike/wishlistItem/new
 
-// BODY TEXT FOR POSTMAN TO MAKE A NEW WISHLIST ITEM
+// BODY TEXT FOR POSTMAN TO MAKE A NEW CART ITEM
 // {
 //     "productId": 1
 // }
@@ -76,16 +76,16 @@ router.delete('/:id', async (req, res) => {
     try {
         const token = req.headers.authorization
         const user = jwt.verify(token, proccess.env.JWT_SECRET_KEY)
-        const wishlist = await prisma.wishlist.findUnique({
+        const cart = await prisma.cart.findUnique({
             where: {
                 userId: user.id
             }
         })
-        const wishlistItemId = parseInt(req.params.id);
-        await prisma.wishlistItem.delete({
+        const cartId = parseInt(req.params.id);
+        await prisma.cartItem.delete({
             where: {
-                id: wishlistItemId,
-                wishlistId: wishlist.id
+                id: cartId,
+                cartId: cart.id
             }
 
         });
