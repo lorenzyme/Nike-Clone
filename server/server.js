@@ -24,7 +24,8 @@ app.use('/nike/shoes', require('./routes/shoes'));
 app.use('/nike/users', require('./routes/users'));
 app.use('/nike/getAll', require('./routes/getAll'));
 app.use('/nike/products', require('./routes/products'));
-app.use('/nike/wishlistItem', require('./routes/wishlistItems'))
+app.use('/nike/wishlistItem', require('./routes/wishlistItems'));
+app.use('/nike/cartItem', require('./routes/cartItems'));
 
 
 
@@ -105,8 +106,12 @@ app.post('/auth/register', async (req, res, next) => {
         });
         const newWishlist = await prisma.wishlist.create({
             data: {
-                userId: newUser.id,
-                
+                userId: newUser.id
+            }
+        })
+        const newCart = await prisma.cart.create({
+            data: {
+                userId: newUser.id
             }
         })
 

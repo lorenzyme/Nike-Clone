@@ -22,17 +22,16 @@ function App() {
 
 const user = useSelector((state) => state.users);
 const dispatch = useDispatch();
-const navigate = useNavigate();
 const location = useLocation();
 
 useEffect(() => {
   const getAllProducts = async () => {
-    const response = await fetch("http://localhost:3000/nike/getAll");
-    const data = await response.json();
-    // const productResponse = await fetch("http://localhost:3000/nike/products/");
-    // const productData = await productResponse.json();
+    // const response = await fetch("http://localhost:3000/nike/getAll");
+    // const data = await response.json();
+    const productResponse = await fetch("http://localhost:3000/nike/products/");
+    const productData = await productResponse.json();
     console.log(productData);
-    dispatch(allProducts(data));
+    dispatch(allProducts(productData));
   };
   getAllProducts();
 }, []);
@@ -129,7 +128,7 @@ const Logout = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/single:id" element={<SingleItem />} />
               <Route path='/search:name' element={<Search />}></Route>
-              <Route path='/products' element={<Products />} />
+              <Route path='/products/:category' element={<Products />} />
             </>
             ) :
             (
@@ -139,7 +138,7 @@ const Logout = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path='/search/:name' element={<Search  />}></Route>
-              <Route path='/products' element={<Products />} />
+              <Route path='/products/:category' element={<Products />} />
             </>
            )}  
           </Routes>
