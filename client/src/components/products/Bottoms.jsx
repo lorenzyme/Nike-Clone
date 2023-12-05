@@ -22,8 +22,8 @@ const Bottoms = () => {
           {bottoms.map((bottoms) => {
             return (
               <div className="product-info" key={bottoms.id}>
-                <h4 id="item-name">{bottoms.itemname}</h4>
-                <img id="item-img" src={bottoms.img} alt="product image" />
+                <h4 id="item-name">{bottoms.name}</h4>
+                <img id="item-img" src={bottoms.imgUrl} alt="product image" />
                 <p id="item-desc">{bottoms.details}</p>
                 <h4 id="size">{bottoms.size}</h4>
                 <h4 id="item-color">{bottoms.color}</h4>

@@ -14,7 +14,7 @@ async function main() {
     await prisma.products.create({
       data: 
       {
-        itemname: product.itemname,
+        name: product.name,
         color: product.color,
         size: product.size,
         gender: product.gender,
@@ -31,7 +31,7 @@ async function main() {
     await prisma.accessories.create({
       data: 
       {
-        itemname: accessory.itemname,
+        name: accessory.name,
         color: accessory.color,
         size: accessory.size,
         gender: accessory.gender,
@@ -48,7 +48,7 @@ async function main() {
     await prisma.tops.create({
       data: 
       {
-        itemname: top.itemname,
+        name: top.name,
         color: top.color,
         size: top.size,
         gender: top.gender,
@@ -66,7 +66,7 @@ async function main() {
     await prisma.bottoms.create({
       data: 
       {
-        itemname: bottom.itemname,
+        name: bottom.name,
         color: bottom.color,
         size: bottom.size,
         gender: bottom.gender,
@@ -83,7 +83,7 @@ async function main() {
     await prisma.shoes.create({
       data: 
       {
-        itemname: shoe.itemname,
+        name: shoe.name,
         color: shoe.color,
         size: shoe.size,
         gender: shoe.gender,

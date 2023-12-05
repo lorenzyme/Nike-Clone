@@ -21,7 +21,7 @@ const SearchBar = () => {
   }, [location.pathname]);
 
 
-  //   return value && product && product.itemName && product.itemName.toLowerCase().includes(value);
+  //   return value && product && product.name && product.name.toLowerCase().includes(value);
 
 
   const handleChange = (value) => {

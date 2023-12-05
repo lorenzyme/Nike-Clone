@@ -12,7 +12,7 @@ const Mens = () => {
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
-        console.log(`added ${product.itemname} to cart!`);
+        console.log(`added ${product.name} to cart!`);
       }
 
     useEffect(() => {
@@ -41,10 +41,10 @@ const Mens = () => {
                 convertToArray(products).filter((product) => product.gender === "men").map((product) => {
                     
                     return ( 
-                        <div className="product-details" key={product.itemname}>
-                          <img src={`${product.imageUrl}`}/>
+                        <div className="product-details" key={product.name}>
+                          <img src={`${product.imgUrl}`}/>
                           <div id='product-card'>
-                            <h4>{product.itemname}</h4>
+                            <h4>{product.name}</h4>
                             <h4>{product.cost}</h4>
                             <h4>{product.color}</h4>
                             <p>{product.details}</p>

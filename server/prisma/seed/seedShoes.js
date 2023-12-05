@@ -1,7 +1,7 @@
 const shoes = [
     {
         id: 1, 
-        itemname: 'AF1',  
+        name: 'AF1',  
         color: 'white', 
         size: '6', 
         gender: 'men', 
@@ -12,7 +12,7 @@ const shoes = [
     },
     {
         id: 2, 
-        itemname: 'Jordans', 
+        name: 'Jordans', 
         color: 'black/yellow', 
         size: '9', 
         gender: 'women', 
@@ -23,7 +23,7 @@ const shoes = [
     },
     {
         id: 3, 
-        itemname: 'Vaporfly3',  
+        name: 'Vaporfly3',  
         color: 'black/white', 
         size: '11', 
         gender: 'men', 

@@ -1,6 +1,6 @@
 const products = [
     {
-        itemname: 'necklace',  
+        name: 'necklace',  
         color: 'gold', 
         size: '16in', 
         gender: 'men', 
@@ -11,7 +11,7 @@ const products = [
         category: 'accessories'
     },
     {
-        itemname: 'ring', 
+        name: 'ring', 
         color: 'rose gold', 
         size: '7mm', 
         gender: 'women', 
@@ -22,7 +22,7 @@ const products = [
         category: 'accessories'
     },
     {
-        itemname: 'watch', 
+        name: 'watch', 
         color: 'silver', 
         size: '40mm', 
         gender: 'men', 
@@ -33,7 +33,7 @@ const products = [
         category: 'accessories'
     },
     {
-        itemname: 'joggers',  
+        name: 'joggers',  
         color: 'white/black', 
         size: '12', 
         gender: 'men', 
@@ -44,7 +44,7 @@ const products = [
         category: 'bottoms'
     },
     {
-        itemname: 'shorts', 
+        name: 'shorts', 
         color: 'white', 
         size: '29', 
         gender: 'women', 
@@ -55,7 +55,7 @@ const products = [
         category: 'bottoms'
     },
     {
-        itemname: 'snow pants',  
+        name: 'snow pants',  
         color: 'black', 
         size: '34', 
         gender: 'men', 
@@ -66,7 +66,7 @@ const products = [
         category: 'bottoms'
     },
     {
-        itemname: 'AF1',  
+        name: 'AF1',  
         color: 'white', 
         size: '6', 
         gender: 'men', 
@@ -77,7 +77,7 @@ const products = [
         category: 'shoes'
     },
     {
-        itemname: 'Jordans', 
+        name: 'Jordans', 
         color: 'black/yellow', 
         size: '9', 
         gender: 'women', 
@@ -88,7 +88,7 @@ const products = [
         category: 'shoes'
     },
     {
-        itemname: 'Vaporfly3',  
+        name: 'Vaporfly3',  
         color: 'black/white', 
         size: '11', 
         gender: 'men', 
@@ -99,7 +99,7 @@ const products = [
         category: 'shoes'
     },
     {
-        itemname: 't-shirt',  
+        name: 't-shirt',  
         color: 'white', 
         size: 'small', 
         gender: 'men', 
@@ -110,7 +110,7 @@ const products = [
         category: 'tops'
     },
     {
-        itemname: 'long sleeve', 
+        name: 'long sleeve', 
         color: 'grey', 
         size: 'med', 
         gender: 'women', 
@@ -121,7 +121,7 @@ const products = [
         category: 'tops'
     },
     {
-        itemname: 'sweater',  
+        name: 'sweater',  
         color: 'black', 
         size: 'med', 
         gender: 'men', 

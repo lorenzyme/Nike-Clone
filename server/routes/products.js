@@ -27,10 +27,10 @@ router.get('/', async (req, res) => {
 router.post('/new', async (req, res) => {
 
     try {
-        const { itemname, color, size, forkids, details, cost, img, category } = req.body;
+        const { name, color, size, forkids, details, cost, img, category } = req.body;
         const newProduct = await prisma.products.create({
             data: {
-                itemname,
+                name,
                 color,
                 size,
                 forkids,
@@ -52,7 +52,7 @@ router.post('/new', async (req, res) => {
 // BODY TEXT FOR POSTMAN TO MAKE A NEW PRODUCT
 // {
 //     "id": 3,
-//     "itemname": "watch",
+//     "name": "watch",
 //     "color": "gold",
 //     "size": "big"
 //     "forkids": false,
@@ -68,12 +68,12 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const productsId = parseInt(req.params.id);
-        const { itemname, color, size, forkids, details, cost, img, category } = req.body;
+        const { name, color, size, forkids, details, cost, img, category } = req.body;
 
         const updateItem = await prisma.products.update({
             where: {id: parseInt(productsId)},
             data: {
-                itemname,
+                name,
                 color,
                 size,
                 forkids,
@@ -95,7 +95,7 @@ router.put('/:id', async (req, res) => {
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE
 // {
-//     "itemname": "necklace",
+//     "name": "necklace",
 //     "color": "silver",
 //     "size": "28 inch",
 //     "forkids": false,

@@ -1,7 +1,7 @@
 const bottoms = [
     {
         id: 1, 
-        itemname: 'joggers',  
+        name: 'joggers',  
         color: 'white/black', 
         size: '12', 
         gender: 'men', 
@@ -12,7 +12,7 @@ const bottoms = [
     },
     {
         id: 2, 
-        itemname: 'shorts', 
+        name: 'shorts', 
         color: 'white', 
         size: '29', 
         gender: 'women', 
@@ -23,7 +23,7 @@ const bottoms = [
     },
     {
         id: 3, 
-        itemname: 'snow pants',  
+        name: 'snow pants',  
         color: 'black', 
         size: '34', 
         gender: 'men', 

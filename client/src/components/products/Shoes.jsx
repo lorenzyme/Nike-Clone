@@ -22,8 +22,8 @@ const Shoes = () => {
           {shoes.map((shoes) => {
             return (
               <div className="product-info" key={shoes.id}>
-                <h4 id="item-name">{shoes.itemname}</h4>
-                <img id="item-img" src={shoes.img} alt="product image" />
+                <h4 id="item-name">{shoes.name}</h4>
+                <img id="item-img" src={shoes.imgUrl} alt="product image" />
                 <p id="item-desc">{shoes.details}</p>
                 <h4 id="size">{shoes.size}</h4>
                 <h4 id="item-color">{shoes.color}</h4>

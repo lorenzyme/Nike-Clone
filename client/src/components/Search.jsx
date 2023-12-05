@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../app/cart/cartSlice";
 
 const Search = () => {
-  const { itemName } = useParams();
+  const { name } = useParams();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
-    console.log(`added ${product.itemname} to cart!`);
+    console.log(`added ${product.name} to cart!`);
   }
 
   const convertToArray = (productsObj) => {
@@ -33,7 +33,7 @@ const Search = () => {
               }
             />
             <div>
-              <h4>{product.itemname}</h4>
+              <h4>{product.name}</h4>
               <h4>{product.cost}</h4>
               <h4>{product.color}</h4>
               <p>{product.details}</p>
