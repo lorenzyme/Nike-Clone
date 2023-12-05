@@ -83,6 +83,12 @@ model cart {
   user      users      @relation(fields: [userId], references: [id])
   userId    Int
   cartItems cartItem[]
+  status    Status @default(OPEN)
+}
+
+enum Status {
+  OPEN
+  CLOSED
 }
 
 model cartItem {

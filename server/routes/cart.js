@@ -7,58 +7,58 @@ const prisma = new PrismaClient();
 
 // ******************************************************************************************
 
-// GET ALL THE CART ITEMS FOR SPECIFIC USER
+// GET ALL THE CARTS FOR SPECIFIC USER
 router.get('/', async (req, res) => {
 
     try {
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const cart = await prisma.cart.findUnique({
+        const carts = await prisma.cart.findMany({
             where: {
                 userId: user.id
             }
         });
 
-        const cartItems = await prisma.cartItem.findMany({
-            where: {
-                cartId: cart.id,
-            }
-        })
-        res.json(cartItems);
+        
+        res.json(carts);
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong finding cart items'});
+        res.status(500).json({error: 'Something went wrong finding your carts'});
     }
 })
 
-// POSTMAN "GET" ROUTE --> http://localhost:3000/nike/cartItem/
+// POSTMAN "GET" ROUTE --> http://localhost:3000/nike/cart
 
 // ******************************************************************************************
 
-// CREATE A CART ITEM
-router.post('/new', async (req, res) => {
+// CLOSE A CART ON CHECKOUT
+router.post('/checkout', async (req, res) => {
 
     try {
-        const { productId } = req.body
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const cart = await prisma.cart.findUnique({
+        const openCart = await prisma.cart.findUnique({
             where: {
+                userId: user.id,
+                status: 'OPEN'
+            }
+        });
+         await openCart.update({
+            data: {
+                status: 'CLOSED'
+            }
+        })
+        const newCart = await prisma.cart.create({
+            data: {
                 userId: user.id
             }
+        })
         
-        });
-        const newCartItem = await prisma.cartItem.create({
-            data: {
-                productId,
-                cartId: cart.id
-            }
-        });
-        res.json(newCartItem);
+        res.json(newCart);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: 'Something went wrong creating a new cart item'});
+        res.status(500).json({error: 'Something went wrong creating a new wishlist item'});
     }
 })
 
@@ -100,34 +100,5 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({error: 'Something went wrong updating the cart item'});
     }
 })
-// ******************************************************************************************
-
-// DELETE A CART ITEM
-router.delete('/:id', async (req, res) => {
-    try {
-        const token = req.headers.authorization
-        const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
-        const cart = await prisma.cart.findUnique({
-            where: {
-                userId: user.id
-            }
-        })
-        const cartId = parseInt(req.params.id);
-        await prisma.cartItem.delete({
-            where: {
-                id: cartId,
-                cartId: cart.id
-            }
-
-        });
-        return res.json({message: 'Cart item deleted'});
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Something went wrong deleting a cart item'});
-    }
-})
-
-// POSTMAN "DELETE" ROUTE --> http://localhost:3000/nike/cartItem/1
-// Change the "1" to the id number of the item you want to delete
 
 module.exports = router;

@@ -106,8 +106,12 @@ app.post('/auth/register', async (req, res, next) => {
         });
         const newWishlist = await prisma.wishlist.create({
             data: {
-                userId: newUser.id,
-                
+                userId: newUser.id
+            }
+        })
+        const newCart = await prisma.cart.create({
+            data: {
+                userId: newUser.id
             }
         })
 
