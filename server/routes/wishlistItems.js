@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 // ******************************************************************************************
 
-// GET ALL THE WISHLISTITEMS FOR SPECIFIC USER
+// GET ALL THE WISHLIST ITEMS FOR A SPECIFIC USER
 router.get('/', async (req, res) => {
 
     try {
@@ -75,7 +75,7 @@ router.post('/new', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const token = req.headers.authorization
-        const user = jwt.verify(token, proccess.env.JWT_SECRET_KEY)
+        const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
         const wishlist = await prisma.wishlist.findUnique({
             where: {
                 userId: user.id

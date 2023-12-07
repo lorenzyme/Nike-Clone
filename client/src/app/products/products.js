@@ -1,13 +1,7 @@
 import { GET_ALL_PRODUCTS } from "../actionTypes";
 
-const initialState = () => {
-    return {
-        tops: [],
-        bottoms: [],
-        shoes: [],
-        accessories: []
-    }
-};
+const initialState = () => [];
+
 
 export const allProducts = (payload) => {
     return {
@@ -28,7 +22,7 @@ export const allProducts = (payload) => {
 // define the handler for this specific action
 // takes a state and an action and returns the same way
 export const handleAllProducts = (state, action) => {
-    return {...state, ...action.payload}
+    return action.payload
 };
 // this is less an O(N) it's actually an O(1) operation
 export const products = (state = initialState(), action = {}) => {

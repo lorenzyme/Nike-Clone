@@ -140,8 +140,8 @@ function App() {
                 <Route path="/*" element={<Home />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/single:id" element={<SingleItem />} />
-                <Route path="/search:name" element={<Search />}></Route>
-                <Route path="/products" element={<Products />} />
+                <Route path="/search/:name" element={<Search />}></Route>
+                <Route path="/products/:category" element={<Products />} />
               </>
             ) : (
               <>
@@ -150,7 +150,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/search/:name" element={<Search />}></Route>
-                <Route path="/products" element={<Products />} />
+                <Route path="/products/:category" element={<Products />} />
               </>
             )}
           </Routes>
