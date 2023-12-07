@@ -6,7 +6,7 @@ const products = [
         gender: 'men', 
         forkids: true, 
         details: 'Description content', 
-        cost: '$200', 
+        cost: 200, 
         img: 'image link/url goes here',
         category: 'accessories'
     },
@@ -17,7 +17,7 @@ const products = [
         gender: 'women', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$1000', 
+        cost: 1000, 
         img: 'image link/url goes here',
         category: 'accessories'
     },
@@ -28,7 +28,7 @@ const products = [
         gender: 'men', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$500', 
+        cost: 500, 
         img: 'image link/url goes here',
         category: 'accessories'
     },
@@ -39,7 +39,7 @@ const products = [
         gender: 'men', 
         forkids: true, 
         details: 'Description content', 
-        cost: '$200', 
+        cost: 200, 
         img: 'image link/url goes here',
         category: 'bottoms'
     },
@@ -50,7 +50,7 @@ const products = [
         gender: 'women', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$1000', 
+        cost: 1000, 
         img: 'image link/url goes here',
         category: 'bottoms'
     },
@@ -61,7 +61,7 @@ const products = [
         gender: 'men', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$500', 
+        cost: 500, 
         img: 'image link/url goes here',
         category: 'bottoms'
     },
@@ -72,7 +72,7 @@ const products = [
         gender: 'men', 
         forkids: true, 
         details: 'Description content', 
-        cost: '$200', 
+        cost: 200, 
         img: 'image link/url goes here',
         category: 'shoes'
     },
@@ -83,7 +83,7 @@ const products = [
         gender: 'women', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$1000', 
+        cost: 1000, 
         img: 'image link/url goes here',
         category: 'shoes'
     },
@@ -94,7 +94,7 @@ const products = [
         gender: 'men', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$500', 
+        cost: 500, 
         img: 'image link/url goes here',
         category: 'shoes'
     },
@@ -105,7 +105,7 @@ const products = [
         gender: 'men', 
         forkids: true, 
         details: 'Description content', 
-        cost: '$200', 
+        cost: 200, 
         img: 'image link/url goes here',
         category: 'tops'
     },
@@ -116,7 +116,7 @@ const products = [
         gender: 'women', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$1000', 
+        cost: 1000, 
         img: 'image link/url goes here',
         category: 'tops'
     },
@@ -127,7 +127,7 @@ const products = [
         gender: 'men', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$500', 
+        cost: 500, 
         img: 'image link/url goes here',
         category: 'tops'
     }

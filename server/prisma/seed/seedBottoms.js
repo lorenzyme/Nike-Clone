@@ -7,7 +7,7 @@ const bottoms = [
         gender: 'men', 
         forkids: true, 
         details: 'Description content', 
-        cost: '$200', 
+        cost: 200, 
         img: 'image link/url goes here'
     },
     {
@@ -18,7 +18,7 @@ const bottoms = [
         gender: 'women', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$1000', 
+        cost: 1000, 
         img: 'image link/url goes here'
     },
     {
@@ -29,7 +29,7 @@ const bottoms = [
         gender: 'men', 
         forkids: false, 
         details: 'Description content', 
-        cost: '$500', 
+        cost: 500, 
         img: 'image link/url goes here'
     }
 ];

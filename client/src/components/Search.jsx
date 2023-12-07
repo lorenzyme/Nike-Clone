@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../app/cart/cartSlice";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Search = () => {
   const { name } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
@@ -24,6 +26,8 @@ const Search = () => {
 
   return (
     <div>
+      <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
+
       {convertToArray(products).map((product) => {
         return (
           <div className="product-details" key={product.id}>

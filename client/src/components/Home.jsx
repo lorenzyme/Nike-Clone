@@ -1,12 +1,13 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
-import Cart from "./checkout/Cart";
 import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import Mens from "./products/Mens";
 import Womens from "./products/Womens";
 import Kids from "./products/Kids";
+import Cart from "./checkout/Cart";
 
 const Home = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ const Home = () => {
             <Route path='/mens' element={<Mens />}/>
             <Route path='/womens' element={<Womens />}/>
             <Route path='/kids' element={<Kids />}/>
+            <Route path='/cart' element={<Cart />}/>
           </Routes>
           <Link to='/mens' id='mens-button-link'>
             <button>
@@ -35,11 +37,11 @@ const Home = () => {
             </button>
             </Link>
         </div>
-
+        <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
         <div className="secondary-navbar">
           <SearchBar />
           <button id="wishlist-button" onClick={() => navigate('/wishlist')}><FaRegHeart /></button>
-         <Cart />
+
         </div>
         
         <div id="scroll-container">

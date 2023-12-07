@@ -21,7 +21,7 @@ async function main() {
         forkids: product.forkids,
         details: product.details,
         cost: product.cost,
-        img: product.img,
+        imgUrl: product.img,
         category: product.category
       }
     })
@@ -38,7 +38,7 @@ async function main() {
         forkids: accessory.forkids,
         details: accessory.details,
         cost: accessory.cost,
-        img: accessory.img
+        imgUrl: accessory.img
       }
     })
   }
@@ -55,7 +55,7 @@ async function main() {
         forkids: top.forkids,
         details: top.details,
         cost: top.cost,
-        img: top.img
+        imgUrl: top.img
       }
     })
   }
@@ -73,7 +73,7 @@ async function main() {
         forkids: bottom.forkids,
         details: bottom.details,
         cost: bottom.cost,
-        img: bottom.img
+        imgUrl: bottom.img
       }
     })
   }
@@ -90,7 +90,7 @@ async function main() {
         forkids: shoe.forkids,
         details: shoe.details,
         cost: shoe.cost,
-        img: shoe.img
+        imgUrl: shoe.img
       }
     })
   }

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FaTruck } from "react-icons/fa";
+import { SiHomeassistantcommunitystore } from "react-icons/si";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Checkout = () => {
   const [name, setName] = useState("");
@@ -13,8 +16,14 @@ const Checkout = () => {
 
   return (
     <div>
+      <button id="cart-button" onClick={() => navigate("/cart")}>
+        <AiOutlineShoppingCart />
+      </button>
+      <br />
+      <br />
+
       <h1 id="title">Checkout</h1>
-      <form 
+      <form
         onSubmit={(e) => {
           //prevent default always happens first, just resets form
           e.preventDefault();
@@ -26,32 +35,38 @@ const Checkout = () => {
         }}
         id="form"
       >
+        <br />
+        <br />
         <div>
-          <h1 id="title"> Delivery Options </h1>
-          <button id="chkout-button">Ship</button>
-          <button id="chkout-button">Pick It Up</button>
-          Name
+          <h3 id="title"> Delivery Options </h3>
+          <button id="ship-button">
+            <FaTruck />
+          </button>
+          <button id="ship-button">
+            <SiHomeassistantcommunitystore />
+          </button>
+          <h4>Name</h4>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             id="input-field"
             type="text"
           />
-          Email
+          <h4>Email</h4>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             id="input-field"
             type="text"
           />
-          Address
+          <h4>Address</h4>
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             id="input-field"
             type="text"
           />
-          Phone Number
+          <h4>Phone Number</h4>
           <input
             type="text"
             value={phone}
@@ -59,7 +74,7 @@ const Checkout = () => {
             id="input-field"
           />
           <div>
-            <button id="chkout-button">Complete</button>
+            <button id="auth-button">Complete</button>
           </div>
         </div>
       </form>
