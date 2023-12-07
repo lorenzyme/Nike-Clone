@@ -70,14 +70,14 @@ const Signup = () => {
 
   return (
     <div>
-      <h1 id="title">Let's Get Started!</h1>
       <form
         onSubmit={ onSubmit }
         id="form"
       >
         <div>
-          <h1 id="title"> Enter User Details Below </h1>
-          Name
+          <h3 id="title"> Enter User Details Below </h3>
+          <br /><br /><br />
+         <h4>Name</h4> 
           <input
             placeholder="Name"
             value={name}
@@ -85,7 +85,7 @@ const Signup = () => {
             id="input-field"
             type="text"
           />
-          Email
+         <h4>Email</h4> 
           <input
             placeholder="Email"
             value={email}
@@ -93,7 +93,7 @@ const Signup = () => {
             id="input-field"
             type="text"
           />
-          Username
+         <h4>Username</h4> 
           <input
             placeholder="Username"
             value={username}
@@ -101,7 +101,7 @@ const Signup = () => {
             id="input-field"
             type="text"
           />
-          Password
+          <h4>Password</h4> 
           <input
             placeholder="Password"
             minLength="8"
@@ -111,10 +111,12 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             id="input-field"
           />
-          Agree To Terms & Conditions
+          <h4>Agree To Terms & Conditions</h4>
+          <br />
+          <input id="checkbox" type="checkbox" />
           <div>
-            <input id="checkbox" type="checkbox" />
-            <button>Submit</button>
+            <br />
+            <button id="auth-button">Sign Up</button>
           </div>
         </div>
       </form>
