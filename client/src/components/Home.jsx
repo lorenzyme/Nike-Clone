@@ -15,27 +15,21 @@ const Home = () => {
     <>
       <div>
         <div id="catagories-bar">
-          <Routes>
+          {/* <Routes>
             <Route path='/mens' element={<Mens />}/>
             <Route path='/womens' element={<Womens />}/>
             <Route path='/kids' element={<Kids />}/>
             <Route path='/cart' element={<Cart />}/>
-          </Routes>
-          <Link to='/mens' id='mens-button-link'>
-            <button>
+          </Routes> */}
+            <button onClick={() => navigate('/mens')}>
               Men
             </button>
-          </Link>
-          <Link to='/womens' id='womens-button-link'>
-            <button>
+            <button onClick={() => navigate('/womens')}>
               Women
             </button>
-          </Link>
-          <Link to='/kids' id='kids-button-link'>
-            <button>
+            <button onClick={() => navigate('/kids')}>
               Kids
             </button>
-            </Link>
         </div>
         <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
         <div className="secondary-navbar">

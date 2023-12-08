@@ -11,11 +11,13 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Cart from "./components/checkout/Cart";
 import Checkout from "./components/checkout/Checkout";
-import SingleItem from "./components/SingleItem";
 import Wishlist from "./components/Wishlist";
 import Search from "./components/Search";
+import Mens from "./components/products/Mens";
+import Womens from "./components/products/Womens";
+import Kids from "./components/products/Kids";
 import { allProducts } from "./app/products/products";
-import Products from "./components/products/Products";
+
 
 function App() {
   const user = useSelector((state) => state.users);
@@ -23,27 +25,27 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // useEffect(()=>{
-  //   if (user) {
-  //     dispatch({ type: "STORE_USER", payload: user })}
-  //   else if (location.pathname.startsWith('/search')){
-  //     navigate('/login')
-  //   }
+  useEffect(()=>{
+    if (user) {
+      dispatch({ type: "STORE_USER", payload: user })}
+    else if (location.pathname.startsWith('/search')){
+      navigate('/login')
+    }
 
-  // }, [location.pathname]);
+  }, [location.pathname]);
 
   useEffect(() => {
     const getAllProducts = async () => {
-      const response = await fetch("http://localhost:3000/nike/getAll");
-      const data = await response.json();
+      // const response = await fetch("http://localhost:3000/nike/getAll");
+      // const data = await response.json();
       const productResponse = await fetch(
         "http://localhost:3000/nike/products/"
       );
       const productData = await productResponse.json();
-      dispatch(allProducts(data));
+      dispatch(allProducts(productData));
     };
     getAllProducts();
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     const stayedLoggedIn = async () => {
@@ -73,16 +75,16 @@ function App() {
     });
     location.reload();
   };
-  const testGetWishlist = async () => {
-    const token = window.localStorage.getItem("token");
-    const response = await fetch("http://localhost:3000/nike/wishlistItem/", {
-      headers: {
-        authorization: token,
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-  };
+  // const testGetWishlist = async () => {
+  //   const token = window.localStorage.getItem("token");
+  //   const response = await fetch("http://localhost:3000/nike/wishlistItem/", {
+  //     headers: {
+  //       authorization: token,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  // };
   // const testCreation = async () => {
   //   const token = window.localStorage.getItem('token');
   //       const response = await fetch("http://localhost:3000/nike/wishlistItem/new", {
@@ -133,15 +135,16 @@ function App() {
             <>
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path='/mens' element={<Mens />}/>
+              <Route path='/womens' element={<Womens />}/>
+              <Route path='/kids' element={<Kids />}/>
             </>
             {user ? (
               <>
                 <Route path="/home/*" element={<Home />} />
                 <Route path="/*" element={<Home />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/single:id" element={<SingleItem />} />
                 <Route path="/search/:name" element={<Search />}></Route>
-                <Route path="/products/:category" element={<Products />} />
               </>
             ) : (
               <>
@@ -150,7 +153,6 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/search/:name" element={<Search />}></Route>
-                <Route path="/products/:category" element={<Products />} />
               </>
             )}
           </Routes>

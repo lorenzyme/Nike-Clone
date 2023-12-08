@@ -1,7 +1,23 @@
 import SearchBar from "./SearchBar";
+import { useEffect, useState } from "react";
+
 
 const Wishlist = () => {
-
+  const [wishlist, setWishlist] = useState([])
+  useEffect(() => {
+    const getWishlist = async () => {
+      const token = window.localStorage.getItem('token')
+      const wishlistResponse = await fetch("http://localhost:3000/nike/wishlistItem/", {
+              headers: {
+                authorization: token,
+              }
+            });
+            const wishlistData = await wishlistResponse.json();
+            setWishlist(wishlistData);
+            console.log(wishlist)
+    };
+    getWishlist()
+  }, [])
   return (
     <>
       <div>
