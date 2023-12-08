@@ -17,12 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Route imports for express router
-app.use('/nike/accessories', require('./routes/accessories'));
-app.use('/nike/tops', require('./routes/tops'));
-app.use('/nike/bottoms', require('./routes/bottoms'));
-app.use('/nike/shoes', require('./routes/shoes'));
 app.use('/nike/users', require('./routes/users'));
-app.use('/nike/getAll', require('./routes/getAll'));
 app.use('/nike/products', require('./routes/products'));
 app.use('/nike/wishlistItem', require('./routes/wishlistItems'));
 app.use('/nike/cartItem', require('./routes/cartItems'));

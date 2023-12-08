@@ -18,13 +18,12 @@ const Search = () => {
     <div>
       <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
 
-      {products.filter((product) => product.name?.includes(name)).map((product, i) => {
+      {products.filter((product) => product.name.toUpperCase().includes(name.toUpperCase()))
+      .map((product, i) => {
         return (
           <div className="product-details" key={i}>
             <img id="product-img"
-              src={
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/81694d7b-7b00-4a41-9c09-81e8ce01075c/life-mens-chore-coat-r4k91t.png"
-              }
+              src={product.imgUrl}
             />
             <div>
               <h4>{product.name}</h4>

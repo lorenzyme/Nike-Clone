@@ -36,8 +36,6 @@ function App() {
 
   useEffect(() => {
     const getAllProducts = async () => {
-      // const response = await fetch("http://localhost:3000/nike/getAll");
-      // const data = await response.json();
       const productResponse = await fetch(
         "http://localhost:3000/nike/products/"
       );
@@ -75,39 +73,10 @@ function App() {
     });
     location.reload();
   };
-  // const testGetWishlist = async () => {
-  //   const token = window.localStorage.getItem("token");
-  //   const response = await fetch("http://localhost:3000/nike/wishlistItem/", {
-  //     headers: {
-  //       authorization: token,
-  //     },
-  //   });
-  //   const data = await response.json();
-  //   console.log(data);
-  // };
-  // const testCreation = async () => {
-  //   const token = window.localStorage.getItem('token');
-  //       const response = await fetch("http://localhost:3000/nike/wishlistItem/new", {
-  //           headers: {
-  //             authorization: token,
-  //             "Content-Type": "application/json"
-  //           },
-  //           body: JSON.stringify({
-  //             productId: 1,
-  //           }),
-  //           method: 'POST'
-  //         });
-
-  //       const data = await response.json();
-  //       console.log(data);
-  //     };
-
+ 
   return (
     <>
       <div id="container">
-        {/* <button onClick={testGetWishlist}>
-          Our new button!
-        </button> */}
         <div id="navbar">
           <Link to="/home" id="home-link">
             Home

@@ -11,7 +11,8 @@ const rootReducer = () => {
         products,
         users,
         search,
-        cart: cartReducer
+        cart: cartReducer,
+        
     });
     return (state, action) => {
         return combinedReducers(state, action)
