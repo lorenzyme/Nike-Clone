@@ -1,5 +1,6 @@
 import { useSelector, useDispatch, } from "react-redux";
 import { addToCart } from "../../app/cart/cartSlice";
+import WishListButton from "../WishlistButton";
 
 const Kids = () => {
     const dispatch = useDispatch()
@@ -25,6 +26,7 @@ const Kids = () => {
                             <h4>{product.color}</h4>
                             <p>{product.details}</p>
                             <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
+                            <WishListButton productId={product.id} />
                           </div>
                         </div>
                       )

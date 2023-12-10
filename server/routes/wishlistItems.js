@@ -49,12 +49,14 @@ router.post('/new', async (req, res) => {
             }
         
         });
+        console.log(wishlist)
         const newWishlistItem = await prisma.wishlistItem.create({
             data: {
                 productId,
                 wishlistId: wishlist.id
             }
         });
+        console.log(wishlist.id)
         res.json(newWishlistItem);
     } catch (error) {
         console.log(error);

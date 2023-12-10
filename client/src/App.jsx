@@ -1,4 +1,10 @@
-import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeUser } from "./app/users/users";
@@ -18,20 +24,18 @@ import Womens from "./components/products/Womens";
 import Kids from "./components/products/Kids";
 import { allProducts } from "./app/products/products";
 
-
 function App() {
   const user = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(()=>{
+  useEffect(() => {
     if (user) {
       dispatch({ type: "STORE_USER", payload: user })}
     else if (location.pathname.startsWith('/search')){
       navigate('/login')
     }
-
   }, [location.pathname]);
 
   useEffect(() => {
@@ -58,7 +62,7 @@ function App() {
         });
 
         const user = userResponse.data;
-
+        console.log(user)
         dispatch(storeUser(user));
       }
     };
@@ -73,7 +77,7 @@ function App() {
     });
     location.reload();
   };
- 
+
   return (
     <>
       <div id="container">
@@ -104,9 +108,9 @@ function App() {
             <>
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path='/mens' element={<Mens />}/>
-              <Route path='/womens' element={<Womens />}/>
-              <Route path='/kids' element={<Kids />}/>
+              <Route path="/mens" element={<Mens />} />
+              <Route path="/womens" element={<Womens />} />
+              <Route path="/kids" element={<Kids />} />
             </>
             {user ? (
               <>

@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../app/cart/cartSlice";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import WishListButton from "./WishlistButton";
+
 
 const Search = () => {
   const { name } = useParams();
@@ -31,6 +33,7 @@ const Search = () => {
               <h4>{product.color}</h4>
               <p>{product.details}</p>
               <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
+              <WishListButton />
             </div>
           </div>
         );

@@ -44,6 +44,7 @@ router.post('/new', async (req, res) => {
     }
 })
 
+
 // POSTMAN "POST" ROUTE --> http://localhost:3000/nike/users/new
 
 // BODY TEXT FOR POSTMAN TO MAKE AN UPDATE

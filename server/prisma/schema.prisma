@@ -20,54 +20,6 @@ model products {
   category String?  @db.VarChar(50)
 }
 
-model accessories {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  color   String?  @db.VarChar(255)
-  size    String?  @db.VarChar(255)
-  gender  String?  @db.VarChar(255)
-  forkids Boolean?
-  details String?  @db.VarChar(1000)
-  cost    Int?
-  imgUrl  String?  @db.VarChar(255)
-}
-
-model bottoms {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  color   String?  @db.VarChar(255)
-  size    String?  @db.VarChar(255)
-  gender  String?  @db.VarChar(255)
-  forkids Boolean?
-  details String?  @db.VarChar(1000)
-  cost    Int?
-  imgUrl  String?  @db.VarChar(255)
-}
-
-model shoes {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  color   String?  @db.VarChar(255)
-  size    String?  @db.VarChar(255)
-  gender  String?  @db.VarChar(255)
-  forkids Boolean?
-  details String?  @db.VarChar(1000)
-  cost    Int?
-  imgUrl  String?  @db.VarChar(255)
-}
-
-model tops {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  color   String?  @db.VarChar(255)
-  size    String?  @db.VarChar(255)
-  gender  String?  @db.VarChar(255)
-  forkids Boolean?
-  details String?  @db.VarChar(1000)
-  cost    Int?
-  imgUrl  String?  @db.VarChar(255)
-}
-
 model users {
   id       Int       @id @default(autoincrement())
   name     String?   @db.VarChar(255)
@@ -83,7 +35,7 @@ model cart {
   user      users      @relation(fields: [userId], references: [id])
   userId    Int
   cartItems cartItem[]
-  status    Status @default(OPEN)
+  status    Status     @default(OPEN)
 }
 
 enum Status {
@@ -110,5 +62,5 @@ model wishlistItem {
   id         Int      @id @default(autoincrement())
   wishlist   wishlist @relation(fields: [wishlistId], references: [id])
   wishlistId Int
-  productId  Int
+  productId  Int     
 }

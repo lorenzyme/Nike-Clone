@@ -109,7 +109,7 @@ app.post('/auth/register', async (req, res, next) => {
                 userId: newUser.id
             }
         })
-
+        console.log(newWishlist)
         const token = jwt.sign(newUser, process.env.JWT_SECRET_KEY)
         res.send(token);
         // console.log(newUser);
@@ -124,11 +124,28 @@ app.post('/auth/register', async (req, res, next) => {
 app.get('/auth/me', async (req, res, next) => {
 
     const token = req.headers.authorization;
-
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const wishlist = await prisma.wishlist.findUnique({
+        where: {
+            userId: user.id
+        }
+    })
+    const wishlistItems = await prisma.wishlistItem.findMany({
+        where: {
+            wishlistId: wishlist.id
+        }
+    })
+    const carts = await prisma.cart.findMany({
+        where: {
+            userId: user.id
+        }
+    })
 
-    res.send(user);
-
+    res.send({
+        user,
+        wishlist: wishlistItems,
+        carts
+    });
 });
 // ----------------------------------------------------------------------------------------------------------
 
