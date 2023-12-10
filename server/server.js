@@ -17,12 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Route imports for express router
-app.use('/nike/accessories', require('./routes/accessories'));
-app.use('/nike/tops', require('./routes/tops'));
-app.use('/nike/bottoms', require('./routes/bottoms'));
-app.use('/nike/shoes', require('./routes/shoes'));
 app.use('/nike/users', require('./routes/users'));
-app.use('/nike/getAll', require('./routes/getAll'));
 app.use('/nike/products', require('./routes/products'));
 app.use('/nike/wishlistItem', require('./routes/wishlistItems'));
 app.use('/nike/cartItem', require('./routes/cartItems'));
@@ -114,7 +109,7 @@ app.post('/auth/register', async (req, res, next) => {
                 userId: newUser.id
             }
         })
-
+        console.log(newWishlist)
         const token = jwt.sign(newUser, process.env.JWT_SECRET_KEY)
         res.send(token);
         // console.log(newUser);
@@ -129,11 +124,28 @@ app.post('/auth/register', async (req, res, next) => {
 app.get('/auth/me', async (req, res, next) => {
 
     const token = req.headers.authorization;
-
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const wishlist = await prisma.wishlist.findUnique({
+        where: {
+            userId: user.id
+        }
+    })
+    const wishlistItems = await prisma.wishlistItem.findMany({
+        where: {
+            wishlistId: wishlist.id
+        }
+    })
+    const carts = await prisma.cart.findMany({
+        where: {
+            userId: user.id
+        }
+    })
 
-    res.send(user);
-
+    res.send({
+        user,
+        wishlist: wishlistItems,
+        carts
+    });
 });
 // ----------------------------------------------------------------------------------------------------------
 

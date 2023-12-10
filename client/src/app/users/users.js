@@ -1,8 +1,6 @@
 import { STORE_USER } from "../actionTypes";
 
-const initialState = () => {
-    return null
-};
+const initialState = null
 
 export const storeUser = (payload) => {
     return {
@@ -11,10 +9,10 @@ export const storeUser = (payload) => {
     }
 };
 const handleUser = (state, action) => {
-    return action.payload
+    return action.payload.user
 };
 
-export const users = (state = initialState(), action = {}) => {
+export const users = (state = null, action = {}) => {
 
     const actionHandlers = {
         [STORE_USER]: handleUser

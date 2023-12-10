@@ -1,8 +1,9 @@
-import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../app/cart/cartSlice";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import WishListButton from "./WishlistButton";
+
 
 const Search = () => {
   const { name } = useParams();
@@ -15,26 +16,16 @@ const Search = () => {
     console.log(`added ${product.name} to cart!`);
   }
 
-  const convertToArray = (productsObj) => {
-    const productCategoryArrays = Object.values(productsObj);
-    const productsArray = productCategoryArrays.reduce((acc, category) => {
-      return [...acc, ...category];
-    }, []);
-    console.log(productsArray);
-    return productsArray;
-  };
-
   return (
     <div>
       <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
 
-      {convertToArray(products).map((product) => {
+      {products.filter((product) => product.name.toUpperCase().includes(name.toUpperCase()))
+      .map((product, i) => {
         return (
-          <div className="product-details" key={product.id}>
+          <div className="product-details" key={i}>
             <img id="product-img"
-              src={
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/81694d7b-7b00-4a41-9c09-81e8ce01075c/life-mens-chore-coat-r4k91t.png"
-              }
+              src={product.imgUrl}
             />
             <div>
               <h4>{product.name}</h4>
@@ -42,6 +33,7 @@ const Search = () => {
               <h4>{product.color}</h4>
               <p>{product.details}</p>
               <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
+              <WishListButton />
             </div>
           </div>
         );

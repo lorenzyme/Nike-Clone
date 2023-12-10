@@ -1,23 +1,38 @@
+-- CreateEnum
+CREATE TYPE "Status" AS ENUM ('OPEN', 'CLOSED');
+
 -- CreateTable
 CREATE TABLE "products" (
     "id" SERIAL NOT NULL,
-    "itemname" VARCHAR(255),
+    "name" VARCHAR(255),
     "color" VARCHAR(255),
     "size" VARCHAR(255),
     "gender" VARCHAR(255),
     "forkids" BOOLEAN,
     "details" VARCHAR(1000),
-    "cost" VARCHAR(50),
-    "img" VARCHAR(255),
+    "cost" INTEGER,
+    "imgUrl" VARCHAR(255),
     "category" VARCHAR(50),
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
+CREATE TABLE "users" (
+    "id" SERIAL NOT NULL,
+    "name" VARCHAR(255),
+    "email" VARCHAR(255),
+    "username" VARCHAR(25),
+    "password" VARCHAR(255),
+
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "cart" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
+    "status" "Status" NOT NULL DEFAULT 'OPEN',
 
     CONSTRAINT "cart_pkey" PRIMARY KEY ("id")
 );
@@ -26,6 +41,8 @@ CREATE TABLE "cart" (
 CREATE TABLE "cartItem" (
     "id" SERIAL NOT NULL,
     "cartId" INTEGER NOT NULL,
+    "productId" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
 
     CONSTRAINT "cartItem_pkey" PRIMARY KEY ("id")
 );
@@ -42,9 +59,13 @@ CREATE TABLE "wishlist" (
 CREATE TABLE "wishlistItem" (
     "id" SERIAL NOT NULL,
     "wishlistId" INTEGER NOT NULL,
+    "productId" INTEGER NOT NULL,
 
     CONSTRAINT "wishlistItem_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "wishlist_userId_key" ON "wishlist"("userId");

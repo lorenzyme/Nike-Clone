@@ -3,6 +3,7 @@ import { products } from './products/products'
 import { users } from './users/users';
 import { search } from './search/search';
 import cartReducer from './cart/cartSlice';
+import { wishlist } from './wishlist/wishlist';
 
 
 
@@ -11,7 +12,9 @@ const rootReducer = () => {
         products,
         users,
         search,
-        cart: cartReducer
+        cart: cartReducer,
+        wishlist
+        
     });
     return (state, action) => {
         return combinedReducers(state, action)
