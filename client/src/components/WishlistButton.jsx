@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
-import { storeWishlistItems } from "../app/wishlist/wishlist";
+import { storeWishlistItems, deleteWishlistItem } from "../app/wishlist/wishlist";
 
 const WishListButton = ({ productId }) => {
   const dispatch = useDispatch()
   const products = useSelector((state) => state.products);
   const wishlistItems = useSelector((state) => state.wishlist)
-  const [isActive, setIsActive] = useState(false);
+  const isActive = Boolean(wishlistItems[productId])
   const onClick = async () => {
     try {
       const token = window.localStorage.getItem("token");
@@ -27,7 +27,6 @@ const WishListButton = ({ productId }) => {
       );
       const data = await response.json();
       dispatch(storeWishlistItems(data))
-      setIsActive(!isActive);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,7 @@ const WishListButton = ({ productId }) => {
   const deleteOnClick = async () => {
     const token = window.localStorage.getItem("token");
     const deleteResponse = await fetch(
-      `http://localhost:3000/nike/wishlistItem/${productId}`,
+      `http://localhost:3000/nike/wishlistItem/${wishlistItems[productId]}`,
       {
         headers: {
           authorization: token,
@@ -44,7 +43,7 @@ const WishListButton = ({ productId }) => {
       }
     );
     const deleteData = await deleteResponse.json();
-    setIsActive(!isActive);
+    dispatch(deleteWishlistItem(productId))
   };
   return (
     <>
