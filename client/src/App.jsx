@@ -62,7 +62,6 @@ function App() {
         });
 
         const user = userResponse.data;
-        console.log(user)
         dispatch(storeUser(user));
       }
     };

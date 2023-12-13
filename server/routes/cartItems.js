@@ -38,21 +38,21 @@ router.get('/', async (req, res) => {
 
 // CREATE A CART ITEM
 router.post('/new', async (req, res) => {
-
     try {
-        const { productId } = req.body
+        const { productId, quantity } = req.body
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const cart = await prisma.cart.findUnique({
+        const cart = await prisma.cart.findFirst({
             where: {
-                userId: user.id
+                userId: user.id,
+                status: "OPEN"
             }
-        
         });
         const newCartItem = await prisma.cartItem.create({
             data: {
-                productId,
-                cartId: cart.id
+                productId: productId.id,
+                cartId: cart.id,
+                quantity
             }
         });
         res.json(newCartItem);
@@ -63,7 +63,7 @@ router.post('/new', async (req, res) => {
 })
 
 
-// POSTMAN "POST" ROUTE --> http://localhost:3000/nike/wishlistItem/new
+// POSTMAN "POST" ROUTE --> http://localhost:3000/nike/cartItem/new
 
 // BODY TEXT FOR POSTMAN TO MAKE A NEW CART ITEM
 // {
@@ -73,33 +73,41 @@ router.post('/new', async (req, res) => {
 // ******************************************************************************************
 
 // UPDATING AN EXISTING CART ITEM
-router.put('/:id', async (req, res) => {
-    try {
-        const { id } = req.params
-        const { quantity } = req.body
-        const token = req.headers.authorization
-        const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const  productId  = parseInt(req.params.id)
+//         const { quantity, } = req.body
+//         const token = req.headers.authorization
+//         const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
-        const cart = await prisma.cart.findUnique({
-            where : {
-                userId: user.id,
-            }
-        })
-        const updateCartItems = await prisma.cartItem.update({
-            where: {
-                id,
-                cartId: cart.id
-            },
-            data: {
-                quantity
-            }
-        });
-       return  res.json(updateCartItems);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Something went wrong updating the cart item'});
-    }
-})
+//         const cart = await prisma.cart.findFirst({
+//             where : {
+//                 userId: user.id,
+//                 status: "OPEN"
+//             }
+//         })
+//         const cartItem = await prisma.cartItem.findMany({
+//             where: {
+//                 id,
+//                 cartId: cart.id
+//             }
+//         })
+//         const updateCartItems = await prisma.cartItem.updateMany({
+//             where: {
+//                 id,
+//                 cartId: cart.id,
+//             },
+//             data: {
+//                 quantity: productId
+//             }
+//         }); 
+//         console.log(cartItem.quantity)
+//        return  res.json(updateCartItems);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({error: 'Something went wrong updating the cart item'});
+//     }
+// })
 // ******************************************************************************************
 
 // DELETE A CART ITEM

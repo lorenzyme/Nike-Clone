@@ -56,7 +56,6 @@ router.post('/new', async (req, res) => {
                 wishlistId: wishlist.id
             }
         });
-        console.log(wishlist.id)
         res.json(newWishlistItem);
     } catch (error) {
         console.log(error);

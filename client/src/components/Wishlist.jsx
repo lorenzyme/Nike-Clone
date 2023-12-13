@@ -43,9 +43,9 @@ const Wishlist = () => {
         </div>
 
         <div id="space">
-          {wishlist.map((wishlist) => {
+          {wishlist.map((wishlist, i) => {
             return (
-              <div>
+              <div key={i}>
                 <h4>{products[wishlist?.productId-1].name}</h4>
                 <h4>{products[wishlist?.productId-1].cost}</h4>
                 <h4>{products[wishlist?.productId-1].color}</h4>

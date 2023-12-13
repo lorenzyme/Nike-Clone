@@ -135,16 +135,23 @@ app.get('/auth/me', async (req, res, next) => {
             wishlistId: wishlist.id
         }
     })
-    const carts = await prisma.cart.findMany({
+    const cart = await prisma.cart.findFirst({
         where: {
-            userId: user.id
+            userId: user.id,
+            status: 'OPEN'
+        }
+    })
+    console.log(cart)
+    const cartItems = await prisma.cartItem.findMany({
+        where: {
+            cartId: cart.id
         }
     })
 
     res.send({
         user,
         wishlist: wishlistItems,
-        carts
+        carts: cartItems
     });
 });
 // ----------------------------------------------------------------------------------------------------------
