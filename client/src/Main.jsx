@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import store from './app/store.js';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { getTotals } from './app/cart/cartSlice.js';
+
+store.dispatch(getTotals())
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store} >

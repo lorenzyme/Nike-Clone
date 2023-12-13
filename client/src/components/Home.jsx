@@ -1,26 +1,47 @@
 import Carousel from "./Carousel";
 import SearchBar from "./SearchBar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
+
+import Mens from "./products/Mens";
+import Womens from "./products/Womens";
+import Kids from "./products/Kids";
+import Cart from "./checkout/Cart";
 
 const Home = () => {
+
+  const {cartTotalQuantity} = useSelector(state => state.cart)
+  
   const navigate = useNavigate()
   return (
     <>
       <div>
         <div id="catagories-bar">
-            <button onClick={() => navigate('/mens')}>
+          <Routes>
+            <Route path='/mens' element={<Mens />}/>
+            <Route path='/womens' element={<Womens />}/>
+            <Route path='/kids' element={<Kids />}/>
+            <Route path='/cart' element={<Cart />}/>
+          </Routes>
+          <Link to='/mens' id='mens-button-link'>
+            <button>
               Men
             </button>
-            <button onClick={() => navigate('/womens')}>
+          </Link>
+          <Link to='/womens' id='womens-button-link'>
+            <button>
               Women
             </button>
-            <button onClick={() => navigate('/kids')}>
+          </Link>
+          <Link to='/kids' id='kids-button-link'>
+            <button>
               Kids
             </button>
+            </Link>
         </div>
-        <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart /></button>
+        <button id="cart-button" onClick={() => navigate('/cart')}><AiOutlineShoppingCart />{cartTotalQuantity}</button>
         <div className="secondary-navbar">
           <SearchBar />
           <button id="wishlist-button" onClick={() => navigate('/wishlist')}><FaRegHeart /></button>
