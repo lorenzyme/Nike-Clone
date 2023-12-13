@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../app/cart/cartSlice";
+import { addToCart, removeFromCart, clearCart, getTotals } from "../../app/cart/cartSlice";
+import { useEffect } from "react"
 
 const Cart = () => {
 
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
@@ -15,7 +17,14 @@ const Cart = () => {
     dispatch(removeFromCart(cartItem));
   };
 
-  const cart = useSelector((state) => state.cart);
+  const handleClearCart = (cartItem) => {
+    dispatch(clearCart());
+  };
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
   return (
     <div>
       <br />
@@ -27,8 +36,8 @@ const Cart = () => {
         </div>
       ) : (
         <div className="cart">
-          {cart.cartItems?.map((cartItem, i) => (
-            <div id="cart-img" key={i}>
+          {cart.cartItems?.map((cartItem) => (
+            <div id="cart-img">
               <img src={cartItem.imgUrl} />
               <div id="cart-name">
                 <h4>{cartItem.name}</h4>
@@ -52,7 +61,7 @@ const Cart = () => {
           </div>
           <br />
           <br />
-          <button id="empty-cart">Empty Cart</button>
+          <button onClick={handleClearCart} id="empty-cart">Empty Cart</button>
         </div>
       )}
     </div>

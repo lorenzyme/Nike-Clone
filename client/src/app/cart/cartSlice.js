@@ -43,13 +43,14 @@ const cartSlice = createSlice({
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
-
+      //  removes item by decreasing quantity
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
 
         toast.error(`${action.payload.name} removed from cart`, {
           position: "bottom-left",
         });
+        // if the amount of items is 1 and it needs to be removed completely
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter(
           (item) => item.id !== action.payload.id
@@ -64,9 +65,36 @@ const cartSlice = createSlice({
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+        
+    clearCart(state, action) {
+      state.cartItems = [];
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.error("Cart Emptied!", { position: "bottom-left" });
+  },
+
+  getTotals(state, action) {
+    let { total, quantity } = state.cartItems.reduce(
+      (cartTotal, cartItem) => {
+        const { price, cartQuantity } = cartItem;
+        const itemTotal = price * cartQuantity;
+
+        cartTotal.total += itemTotal;
+        cartTotal.quantity += cartQuantity;
+
+        return cartTotal;
+      },
+      {
+        total: 0,
+        quantity: 0,
+      }
+    );
+    total = parseFloat(total.toFixed(2));
+    state.cartTotalQuantity = quantity;
+    state.cartTotalCost = total;
+  }
   },
 });
 
-export const { addToCart, removeFromCart, handleAllCartItems } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, getTotals } = cartSlice.actions;
 
 export default cartSlice.reducer;
