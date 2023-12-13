@@ -73,32 +73,32 @@ router.post('/checkout', async (req, res) => {
 // ******************************************************************************************
 
 // UPDATING AN EXISTING CART ITEM
-router.put('/:id', async (req, res) => {
-    try {
-        const { id } = req.params
-        const { quantity } = req.body
-        const token = req.headers.authorization
-        const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const { id } = req.params
+//         const { quantity } = req.body
+//         const token = req.headers.authorization
+//         const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
-        const cart = await prisma.cart.findUnique({
-            where : {
-                userId: user.id,
-            }
-        })
-        const updateCartItems = await prisma.cartItem.update({
-            where: {
-                id,
-                cartId: cart.id
-            },
-            data: {
-                quantity
-            }
-        });
-       return  res.json(updateCartItems);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Something went wrong updating the cart item'});
-    }
-})
+//         const cart = await prisma.cart.findUnique({
+//             where : {
+//                 userId: user.id,
+//             }
+//         })
+//         const updateCartItems = await prisma.cartItem.update({
+//             where: {
+//                 id,
+//                 cartId: cart.id
+//             },
+//             data: {
+//                 quantity
+//             }
+//         });
+//        return  res.json(updateCartItems);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({error: 'Something went wrong updating the cart item'});
+//     }
+// })
 
 module.exports = router;

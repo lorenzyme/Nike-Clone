@@ -3,14 +3,28 @@ import { FaTruck } from "react-icons/fa";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const Checkout = () => {
+const Checkout = ({cartId}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const token = window.localStorage.getItem('token')
 
   //POST INPUTS TO API HERE
-  const Checkout = async () => {};
+  const checkout = async () => {
+    const sendResponse = await fetch('http://localhost:3000/nike/cart/checkout', {
+      headers: {
+        authorization: token
+      },
+      body: JSON.stringify({
+        cart: cartId,
+        cartItems: cartId
+      }),
+      method: "POST"
+    })
+    const sendData = await sendResponse.json()
+  };
+
 
   // AUTH INFORMATION GOES HERE
 

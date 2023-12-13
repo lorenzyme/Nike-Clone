@@ -9,10 +9,10 @@ export const storeUser = (payload) => {
     }
 };
 const handleUser = (state, action) => {
-    return action.payload.user
+    return action.payload
 };
 
-export const users = (state = null, action = {}) => {
+export const users = (state = initialState, action = {}) => {
 
     const actionHandlers = {
         [STORE_USER]: handleUser
