@@ -491,17 +491,12 @@ input::placeholder {
   color: #213547;
   text-align: center;
   background-color: transparent;
-  border: solid;
-  border-width: 1px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px 15px; 
   box-shadow: 0px 0px 8px #ddd; 
-  float:inline-end;
-  margin-block: 10px;
-  margin-inline-start: 20px;
-  margin-inline-end: 150px;
-  width:33%;
+  float:inline-start;
+  margin-block: 30px;
+  margin-inline-start: 0px;
+  margin-inline-end: 41px;
+  width: 30%;
 }
 
 h4{
@@ -529,6 +524,23 @@ p{
 
 #product-img{
   max-width: 300px;
+}
+
+#product-card, h4{
+font-weight: 500;
+padding-top: 5px;
+}
+
+#product-card, h3{
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#productImages {
+  padding-top: 10px;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 #cart-name{

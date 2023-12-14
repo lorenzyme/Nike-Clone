@@ -65,22 +65,21 @@ const Womens = () => {
 
     return (
         <div>
-            { 
-                products?.filter((product) => product.gender === "women").map((product, i) => {
-                    
-                    return ( 
+            {
+                products?.filter((product) => product.gender === "women" && product.forkids === false).map((product, i) => {
+
+                    return (
                         <div className="product-details" key={i}>
-                          <img src={`${product.imgUrl}`}/>
-                          <div id='product-card'>
-                            <h4>{product.name}</h4>
-                            <h4>{product.cost}</h4>
-                            <h4>{product.color}</h4>
-                            <p>{product.details}</p>
-                            <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
-                            <WishListButton productId={product.id} />
-                          </div>
+                            <img id="productImages"
+                                src={`${product.imgUrl}`} />
+                            <div id='product-card'>
+                                <h4>{product.name}</h4>
+                                <h4>${product.cost}</h4>
+                                <button id="add-to-cart" onClick={() => handleAddToCart(product)}>Add To Cart</button>
+                                <WishListButton productId={product.id} />
+                            </div>
                         </div>
-                      )
+                    )
                 })
             }
 
