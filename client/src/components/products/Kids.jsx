@@ -71,12 +71,11 @@ const Kids = () => {
                     
                     return ( 
                         <div className="product-details" key={i}>
-                          <img src={`${product.imgUrl}`}/>
+                          <img id="productImages"
+                          src={`${product.imgUrl}`}/>
                           <div id='product-card'>
                             <h4>{product.name}</h4>
                             <h4>{product.cost}</h4>
-                            <h4>{product.color}</h4>
-                            <p>{product.details}</p>
                             <button id="add-to-cart" onClick={()=> handleAddToCart(product)}>Add To Cart</button>
                             <WishListButton productId={product.id} />
                           </div>

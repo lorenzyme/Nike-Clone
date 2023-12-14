@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { addToCart, updateCart } from "../../app/cart/cartSlice";
 import WishListButton from "../WishlistButton";
+import "../../Styles.css";
 
 const Mens = (i) => {
     const dispatch = useDispatch()
@@ -68,16 +69,15 @@ const Mens = (i) => {
     return (
         <div>
             {
-                products?.filter((product) => product.gender === "men").map((product, i) => {
+                products?.filter((product) => product.gender === "men" && product.forkids === false).map((product, i) => {
 
                     return (
                         <div className="product-details" key={i}>
-                            <img src={`${product.imgUrl}`} />
+                            <img id="productImages"
+                            src={`${product.imgUrl}`} />
                             <div id='product-card'>
                                 <h4>{product.name}</h4>
-                                <h4>{product.cost}</h4>
-                                <h4>{product.color}</h4>
-                                <p>{product.details}</p>
+                                <h3>${product.cost}</h3>
                                 <button id="add-to-cart" onClick={() => handleAddToCart(product)}>Add To Cart</button>
                                 <WishListButton productId={product.id} />
                             </div>
