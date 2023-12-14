@@ -13,9 +13,10 @@ router.get('/', async (req, res) => {
     try {
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const cart = await prisma.cart.findUnique({
+        const cart = await prisma.cart.findFirst({
             where: {
-                userId: user.id
+                userId: user.id,
+                status: "OPEN"
             }
         });
 
@@ -24,7 +25,35 @@ router.get('/', async (req, res) => {
                 cartId: cart.id,
             }
         })
-        res.json(cartItems);
+        function convertArrayToCart(inputArray) {
+            const cart = {
+              cartItems: [],
+              cartTotalQuantity: 0,
+            };
+          
+            const cartItemMap = new Map();
+          
+            inputArray.forEach(item => {
+              const { productId, quantity } = item;
+          
+              if (cartItemMap.has(productId)) {
+                cartItemMap.set(productId, cartItemMap.get(productId) + quantity);
+              } else {
+                cartItemMap.set(productId, quantity);
+              }
+            });
+          
+            cartItemMap.forEach((cartQuantity, productId) => {
+              cart.cartItems.push({
+                productId,
+                cartQuantity,
+              });
+              cart.cartTotalQuantity += cartQuantity;
+            });
+          
+            return cart;
+          }
+        res.json(convertArrayToCart(cartItems));
 
     } catch (error) {
         console.log(error);
@@ -50,7 +79,7 @@ router.post('/new', async (req, res) => {
         });
         const newCartItem = await prisma.cartItem.create({
             data: {
-                productId: productId.id,
+                productId,
                 cartId: cart.id,
                 quantity
             }
@@ -73,58 +102,66 @@ router.post('/new', async (req, res) => {
 // ******************************************************************************************
 
 // UPDATING AN EXISTING CART ITEM
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const  productId  = parseInt(req.params.id)
-//         const { quantity, } = req.body
-//         const token = req.headers.authorization
-//         const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
+router.put('/:id', async (req, res) => {
+    try {
+        const  productId  = parseInt(req.params.id)
+        const id = parseInt(req.params.id)
+        const { quantity } = req.body
+        const token = req.headers.authorization
+        const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
-//         const cart = await prisma.cart.findFirst({
-//             where : {
-//                 userId: user.id,
-//                 status: "OPEN"
-//             }
-//         })
-//         const cartItem = await prisma.cartItem.findMany({
-//             where: {
-//                 id,
-//                 cartId: cart.id
-//             }
-//         })
-//         const updateCartItems = await prisma.cartItem.updateMany({
-//             where: {
-//                 id,
-//                 cartId: cart.id,
-//             },
-//             data: {
-//                 quantity: productId
-//             }
-//         }); 
-//         console.log(cartItem.quantity)
-//        return  res.json(updateCartItems);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({error: 'Something went wrong updating the cart item'});
-//     }
-// })
+        const cart = await prisma.cart.findFirst({
+            where : {
+                userId: user.id,
+                status: "OPEN"
+            }
+        })
+        const updateCartItems = await prisma.cartItem.updateMany({
+            where: {
+                cartId: cart.id,
+                productId
+            },
+            data: {
+                quantity
+            }
+        })
+        // const groupCartItems = await prisma.cartItem.groupBy({
+        //     by: ['productId'],
+        //     _sum: {
+        //         quantity: true
+        //     }
+        // });
+        console.log(updateCartItems, 'xxxxxXXXXxxxx')
+       return  res.json(updateCartItems);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error: 'Something went wrong updating the cart item'});
+    }
+})
 // ******************************************************************************************
 
 // DELETE A CART ITEM
 router.delete('/:id', async (req, res) => {
     try {
+        const  productId  = parseInt(req.params.id)
+        const id = parseInt(req.params.id)
         const token = req.headers.authorization
         const user = jwt.verify(token, process.env.JWT_SECRET_KEY)
-        const cart = await prisma.cart.findUnique({
+        const cart = await prisma.cart.findFirst({
             where: {
-                userId: user.id
+                userId: user.id,
+                status: "OPEN"
             }
         })
-        const cartId = parseInt(req.params.id);
+        const cartItem = await prisma.cartItem.findFirst({
+            where: {
+                productId,
+                cartId: cart.id
+            }
+        })
         await prisma.cartItem.delete({
             where: {
-                id: cartId,
-                cartId: cart.id
+                id: cartItem.id,
             }
 
         });

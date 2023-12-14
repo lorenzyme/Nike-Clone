@@ -76,7 +76,6 @@ const login = async (username, password) => {
             placeholder="Username"
             value={ username }
             onChange={(e) => setUsername(e.target.value)}
-            id="input-field"
             type="text"
           />
           <h4>Password</h4>
@@ -85,7 +84,6 @@ const login = async (username, password) => {
             type="password"
             value={ password }
             onChange={(e) => setPassword(e.target.value)}
-            id="input-field"
           />
           <div>
             <button id="auth-button">Login</button>
