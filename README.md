@@ -45,3 +45,4 @@
 <br>
 <h2>Other libraries</h2>
 <h4>react-icons, react-toastify</h4>
+<h3>Troubleshooting Docs are located in the server folder</h3>
