@@ -43,4 +43,5 @@
   <br>
 </p>
 <br>
-<h2>Features</h2>
+<h2>Other libraries</h2>
+<h4>react-icons, react-toastify</h4>
