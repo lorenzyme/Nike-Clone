@@ -5,6 +5,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaRegCreditCard } from "react-icons/fa";
+import { DiGithubFull } from "react-icons/di";
+import { FaGithub } from "react-icons/fa";
 
 const Checkout = ({ cartId }) => {
   const [name, setName] = useState("");
