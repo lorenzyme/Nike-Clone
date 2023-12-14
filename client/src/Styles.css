@@ -423,7 +423,7 @@ button:focus-visible {
   font-weight: 300;
   position: absolute;
   left: 50px;
-  top:60px;
+  top:40px;
 }
 
 .coupon{
@@ -621,3 +621,16 @@ gap: 1px;
   display: flex;
   padding: 10px;
  margin-bottom: 30px;}
+
+#cart-img{
+  width: 400px;
+}
+
+#wishlistButton svg {
+  position: relative;
+  left: 100px;
+  bottom: 31px;
+  margin-right: 10px;
+  width: 22px;
+  height: 22px;
+}

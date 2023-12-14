@@ -47,7 +47,7 @@ const WishListButton = ({ productId }) => {
   };
   return (
     <>
-      <div>
+      <div id="wishlistButton">
         {isActive ? (
           <FaHeart onClick={deleteOnClick} />
         ) : (

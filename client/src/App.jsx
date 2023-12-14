@@ -82,6 +82,9 @@ function App() {
       position: "bottom-right",
     });
     location.reload();
+    window.location.reload(false)
+    navigate('/')
+
   };
 
   return (

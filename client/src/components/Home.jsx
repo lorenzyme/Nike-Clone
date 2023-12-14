@@ -46,7 +46,7 @@ const Home = () => {
             <FaRegHeart />
           </button>
         </div>
-
+  
         <div id="space"></div>
         <h3 id="blank">.</h3>
         <h3 className="coupon">⏰ Flash Sale | Extra 25% Off Select Styles</h3>

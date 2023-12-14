@@ -1,6 +1,7 @@
 import { useSelector, useDispatch, } from "react-redux";
 import axios from 'axios'
-
+import { DiGithubFull } from "react-icons/di";
+import { FaGithub } from "react-icons/fa";
 import WishListButton from "../WishlistButton";
 import { addToCart, updateCart } from "../../app/cart/cartSlice";
 
@@ -62,8 +63,9 @@ const Womens = () => {
         updateProductInCart(product.id)
         addProductToCart(product.id)
     }
-
+    
     return (
+       <>
         <div>
             {
                 products?.filter((product) => product.gender === "women" && product.forkids === false).map((product, i) => {
@@ -74,7 +76,7 @@ const Womens = () => {
                                 src={`${product.imgUrl}`} />
                             <div id='product-card'>
                                 <h4>{product.name}</h4>
-                                <h4>${product.cost}</h4>
+                                <h3>${product.cost}</h3>
                                 <button id="add-to-cart" onClick={() => handleAddToCart(product)}>Add To Cart</button>
                                 <WishListButton productId={product.id} />
                             </div>
@@ -84,7 +86,64 @@ const Womens = () => {
             }
 
         </div>
+        <div id="footer">
+        <ul className="social">
+          <li>
+            <a id="gh-button" href="https://github.com/lorenzyme/Nike-Clone">
+              <FaGithub />
+              <DiGithubFull />
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Home
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Support
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Team
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links">Contact</a>
+          </li>
+        </ul>
+        <div id="label-f">
+        <h2 id="label-f">FIND A NEARBY STORE</h2>
+        <br />
+        <h2 id="label-f">BECOME A MEMBER</h2>
+        <br />
+        <h2 id="label-f">ALREADY A MEMBER</h2>
+        <br />
+        <h2 id="label-f">SIGNUP FOR EMAIL</h2>
+        <br />
+        <h2 id="label-f">SEND US FEEDBACK</h2>
+        <br />
+        <h2 id="label-f">GET HELP</h2>
+        <br />
+        </div> 
+        <br />
+        <div id="light-f">
+          <h3>Order Status</h3>
+          <br />
+          <h3>Returns</h3>
+          <br />
+          <h3>Gifts</h3>
+          <br />
+          <h3>Careers</h3>
+          <br />
+        </div>
+      </div>
+        </>
     )
+    
 };
 
 

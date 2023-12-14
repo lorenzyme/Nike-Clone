@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -8,7 +7,8 @@ import {
 } from "../../app/cart/cartSlice";
 import { useEffect } from "react";
 import axios from "axios"
-import { AiTwotoneCalculator } from "react-icons/ai";
+import { FaGithub } from "react-icons/fa";
+import { DiGithubFull } from "react-icons/di";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -55,6 +55,7 @@ const Cart = () => {
   const totalCartCost = calculateTotalCartCost(cartItems, products)
   console.log(totalCartCost)
   return (
+    <>
     <div>
       <br />
       <br />
@@ -83,8 +84,8 @@ const Cart = () => {
       ) : (
         <div className="cart">
           {cart.cartItems?.map((cartItem, i) => (
-            <div id="cart-img" key={`cartItem${i}`}>
-              <img src={products[cartItem.productId - 1].imgUrl} />
+            <div key={`cartItem${i}`}>
+              <img id="cart-img" src={products[cartItem.productId - 1].imgUrl} />
               <div id="cart-name">
                 <h4>{products[cartItem.productId - 1].name}</h4>
               </div>
@@ -103,7 +104,6 @@ const Cart = () => {
           <div>
             {`Subtotal $${totalCartCost}`}
             <h4>Taxes and shipping costs calculated at checkout</h4>
-            <button>Checkout</button>
           </div>
           <br />
           <br />
@@ -113,6 +113,62 @@ const Cart = () => {
         </div>
       )}
     </div>
+    <div id="footer">
+        <ul className="social">
+          <li>
+            <a id="gh-button" href="https://github.com/lorenzyme/Nike-Clone">
+              <FaGithub />
+              <DiGithubFull />
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Home
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Support
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links" href="#">
+              Team
+            </a>
+          </li>
+          <li className="footer-item">
+            <a className="footer-links">Contact</a>
+          </li>
+        </ul>
+        <div id="label-f">
+        <h2 id="label-f">FIND A NEARBY STORE</h2>
+        <br />
+        <h2 id="label-f">BECOME A MEMBER</h2>
+        <br />
+        <h2 id="label-f">ALREADY A MEMBER</h2>
+        <br />
+        <h2 id="label-f">SIGNUP FOR EMAIL</h2>
+        <br />
+        <h2 id="label-f">SEND US FEEDBACK</h2>
+        <br />
+        <h2 id="label-f">GET HELP</h2>
+        <br />
+        </div> 
+        <br />
+        <div id="light-f">
+          <h3>Order Status</h3>
+          <br />
+          <h3>Returns</h3>
+          <br />
+          <h3>Gifts</h3>
+          <br />
+          <h3>Careers</h3>
+          <br />
+        </div>
+      </div>
+    </>
   );
 };
 

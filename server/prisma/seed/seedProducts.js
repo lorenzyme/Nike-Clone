@@ -130,7 +130,7 @@ const products = [
         forkids: false,
         details: "A versatile essential for cultivating style with ease. Enhance your comfort with this classic long sleeve in a crisp white hue, offering a timeless and on-trend addition to your wardrobe. Embrace the simplicity and freshness of white.",
         cost: 55,
-        img: 'http://tiny.cc/v8aivz',
+        img: 'https://shorturl.at/kpAV6',
         category: 'tops'
     },
     {
