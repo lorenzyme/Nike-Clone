@@ -39,6 +39,7 @@
 <p align="center">
   
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
+   <a href="https://657ad11eff6dfc0482b38244--sparkly-platypus-36c346.netlify.app/" /></a>
   <br>
 </p>
 <br>
