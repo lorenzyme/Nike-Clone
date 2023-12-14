@@ -28,7 +28,10 @@ const Cart = () => {
   return (
     <div>
       <br />
-      <br />
+      <br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <br /><br />
       {cart.cartItems.length === 0 ? (
         <div>
           <h5>Your cart is currently empty!</h5>
