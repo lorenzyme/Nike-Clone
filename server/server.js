@@ -151,7 +151,8 @@ app.get('/auth/me', async (req, res, next) => {
     res.send({
         user,
         wishlist: wishlistItems,
-        carts: cartItems
+        carts: cartItems,
+        cartId: cart.id
     });
 });
 // ----------------------------------------------------------------------------------------------------------

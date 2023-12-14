@@ -23,6 +23,7 @@ import Mens from "./components/products/Mens";
 import Womens from "./components/products/Womens";
 import Kids from "./components/products/Kids";
 import { allProducts } from "./app/products/products";
+import { addToCart, updateCart } from "./app/cart/cartSlice";
 
 function App() {
   const user = useSelector((state) => state.users);
@@ -60,13 +61,19 @@ function App() {
             authorization: token,
           },
         });
-
+        const cartItems = await axios.get("http://localhost:3000/nike/cartItem", {
+          headers: {
+            authorization: token,
+          },
+        });
         const user = userResponse.data;
         dispatch(storeUser(user));
+        dispatch(updateCart(cartItems.data))
       }
     };
     stayedLoggedIn();
   }, []);
+
 
   const Logout = () => {
     window.localStorage.removeItem("token");

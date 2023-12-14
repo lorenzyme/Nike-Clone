@@ -85,22 +85,22 @@ const Home = () => {
           </li>
         </ul>
         <ul>
-          <li class="footer-item">
+          <li className="footer-item">
             <a className="footer-links" href="#">
               Home
             </a>
           </li>
-          <li class="footer-item">
+          <li className="footer-item">
             <a className="footer-links" href="#">
               Support
             </a>
           </li>
-          <li class="footer-item">
+          <li className="footer-item">
             <a className="footer-links" href="#">
               Team
             </a>
           </li>
-          <li class="footer-item">
+          <li className="footer-item">
             <a className="footer-links">Contact</a>
           </li>
         </ul>
